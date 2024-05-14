@@ -23,6 +23,7 @@ class AgendaController extends Controller
             'judul' => 'required',
             'deskripsi' => 'required',
             'deskripsi_singkat' => 'required',
+            'redirect' => 'nullable|url',
         ]);
 
         $agenda = new Agenda();
@@ -32,6 +33,7 @@ class AgendaController extends Controller
         $agenda->deskripsi_singkat = $request->deskripsi_singkat;
         $agenda->gambar = $request->gambar->store('gambar', 'public');
         $agenda->slug = Str::slug($request->judul);
+        $agenda->redirect = $request->redirect;
         $agenda->save();
 
         return redirect()->back()->with('success', 'Berhasil menambahkan agenda');
@@ -44,6 +46,7 @@ class AgendaController extends Controller
             'judul' => 'required',
             'deskripsi' => 'required',
             'deskripsi_singkat' => 'required',
+            'redirect' => 'nullable|url',
         ]);
 
         $agenda = Agenda::find($id);
@@ -59,6 +62,7 @@ class AgendaController extends Controller
             $agenda->gambar = $request->gambar->store('gambar', 'public');
         }
         $agenda->slug = Str::slug($request->judul);
+        $agenda->redirect = $request->redirect;
         $agenda->save();
 
         return redirect()->back()->with('success', 'Berhasil mengubah agenda');

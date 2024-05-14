@@ -91,6 +91,13 @@
                                 required>
                         </div>
                         <div class="mb-3">
+                            <label for="redirect" class="form-label">Link Berita</label>
+                            <input type="text" class="form-control" id="redirect" name="redirect"
+                                value="{{ $agenda->redirect }}" required>
+                            <span class="text-muted text-sm">Kosongkan jika tidak ingin di redirect ke halaman
+                                lain</span>
+                        </div>
+                        <div class="mb-3">
                             <label for="deskripsi" class="form-label">Deskripsi</label>
                             <input id="editor-tambah-input" type="hidden" class="form-control" id="deskripsi"
                                 name="deskripsi" required>
@@ -140,6 +147,13 @@
                                 <label for="deskripsi_singkat" class="form-label">Deskripsi Singkat</label>
                                 <input type="text" class="form-control" id="deskripsi_singkat"
                                     name="deskripsi_singkat" value="{{ $agenda->deskripsi_singkat }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="redirect" class="form-label">Link Berita</label>
+                                <input type="text" class="form-control" id="redirect" name="redirect"
+                                    value="{{ $agenda->redirect }}" required>
+                                <span class="text-muted text-sm">Kosongkan jika tidak ingin di redirect ke halaman
+                                    lain</span>
                             </div>
                             <div class="mb-3">
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
