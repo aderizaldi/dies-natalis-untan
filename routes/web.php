@@ -22,6 +22,6 @@ Route::prefix('auth')->group(function () {
     Route::match(['get', 'post'], '/logout', [UserController::class, 'logout'])->middleware('auth')->name('logout');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
+    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 });

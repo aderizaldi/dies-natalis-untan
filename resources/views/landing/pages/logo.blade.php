@@ -14,12 +14,12 @@
                         <img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" alt="Logo Dies Natalis Untan">
                     </div>
                     <div class="col-lg-9">
-                        <p class="text-justify">
+                        <p class="text-content">
                             Logo Dies Natalis Universitas Tanjungpura (UNTAN) yang baru ini memiliki filosofi yang
                             mengandung makna yang dalam. Logo ini memiliki makna yang sangat mendalam dan memiliki
                             makna yang sangat penting bagi UNTAN. Berikut adalah filosofi dari logo Dies Natalis UNTAN :
                         </p>
-                        <ol class="text-justify">
+                        <ol class="text-content">
                             <li>Warna Biru : Warna biru pada logo ini melambangkan keberanian, kejujuran, kebenaran,
                                 keadilan, dan kekuatan. Warna biru juga melambangkan keberanian dan kejujuran dalam
                                 menghadapi tantangan dan rintangan yang ada.</li>

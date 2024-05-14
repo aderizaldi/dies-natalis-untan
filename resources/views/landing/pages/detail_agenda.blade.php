@@ -9,10 +9,9 @@
                 </div>
 
                 <div class="row">
-                    {{-- detail berita berita terdiri dari tanggal upload berita, gambar, deskripsi berita, dan tags. Tanpa menggunakan card --}}
-                    {{-- tanggal upload --}}
+                    {{-- tanggal agenda --}}
                     <div class="col-lg-12">
-                        <p class="text-muted text-start">Tanggal Upload: 12 Agustus 2021</p>
+                        <p class="text-muted text-start">Tanggal Agenda: 12 Agustus 2021</p>
                     </div>
                     {{-- gambar --}}
                     <div class="col-lg-12">
