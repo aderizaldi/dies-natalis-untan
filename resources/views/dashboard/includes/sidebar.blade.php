@@ -101,8 +101,8 @@
                 </li>
 
                 <li class="sidebar-title">Pengaturan</li>
-                <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->is('admin/dashboard/profil*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.profil') }}" class='sidebar-link'>
                         <i class="bi bi-person-fill"></i>
                         <span>Profil</span>
                     </a>

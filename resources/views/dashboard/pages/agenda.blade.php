@@ -92,8 +92,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="redirect" class="form-label">Link Berita</label>
-                            <input type="text" class="form-control" id="redirect" name="redirect"
-                                value="{{ $agenda->redirect }}" required>
+                            <input type="text" class="form-control" id="redirect" name="redirect">
                             <span class="text-muted text-sm">Kosongkan jika tidak ingin di redirect ke halaman
                                 lain</span>
                         </div>
@@ -151,7 +150,7 @@
                             <div class="mb-3">
                                 <label for="redirect" class="form-label">Link Berita</label>
                                 <input type="text" class="form-control" id="redirect" name="redirect"
-                                    value="{{ $agenda->redirect }}" required>
+                                    value="{{ $agenda->redirect }}">
                                 <span class="text-muted text-sm">Kosongkan jika tidak ingin di redirect ke halaman
                                     lain</span>
                             </div>

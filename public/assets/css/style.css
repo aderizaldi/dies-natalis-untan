@@ -1979,8 +1979,8 @@ section {
     .timeline-panel-ul
     .lefting-wrap {
     float: right;
-    width: 30%;
-    height: 180px;
+    width: 40%;
+    height: 250px;
     background-color: floralwhite;
 }
 #timeline
@@ -1990,8 +1990,8 @@ section {
     .timeline-panel-ul
     .righting-wrap {
     float: left;
-    width: 70%;
-    height: 180px;
+    width: 50%;
+    height: 250px;
     padding: 0 12px 0 0;
     display: flex;
     flex-direction: column;
@@ -2016,8 +2016,8 @@ section {
     .timeline-panel-ul
     .lefting-wrap {
     float: left;
-    width: 30%;
-    height: 180px;
+    width: 40%;
+    height: 250px;
     background-color: floralwhite;
 }
 #timeline
@@ -2027,8 +2027,8 @@ section {
     .timeline-panel-ul
     .righting-wrap {
     float: right;
-    width: 70%;
-    height: 180px;
+    width: 50%;
+    height: 250px;
     padding: 0 0 0 12px;
     display: flex;
     flex-direction: column;
@@ -2060,7 +2060,7 @@ section {
     img {
     object-fit: cover;
     width: 100%;
-    height: 180px;
+    height: 250px;
 }
 #timeline
     .timeline-movement
@@ -2079,7 +2079,7 @@ section {
     li
     a.importo {
     color: #023e8a;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 600;
 }
 #timeline
@@ -2096,7 +2096,7 @@ section {
     .timeline-panel-ul
     a.importo {
     color: #023e8a;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 600;
 }
 

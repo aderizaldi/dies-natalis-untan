@@ -2,7 +2,7 @@
 @section('content')
     <section id="hero" class="d-flex align-items-center">
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
-            <h1>Dies Natalis Untan Ke-65</h1>
+            <h1>Dies Natalis ke-65 Universitas Tanjungpura</h1>
             <h2>Menuju Masa Depan Berkelanjutan: Aksi Transisi Ke Ekonomi Hijau</h2>
             <div class="d-flex">
                 <a href="{{ route('agenda') }}" class="btn-get-started scrollto">Lihat Agenda</a>
@@ -11,7 +11,7 @@
     </section><!-- End Hero -->
 
     <main id="main">
-        <section id="timeline-section" class="timeline-section">
+        <section id="timeline-section" class="timeline-section section-bg">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>Agenda</h2>
@@ -113,7 +113,7 @@
             </div>
         </section>
 
-        <section id="berita-section" class="berita-section section-bg">
+        <section id="berita-section" class="berita-section">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -148,6 +148,26 @@
                         <div class="text-center mt-4">
                             <a href="{{ route('berita') }}" class="btn btn-primary">Selengkapnya</a>
                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="berita-section" class="berita-section section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Testimoni</h2>
+                    <h3>Testimoni Rektor UNTAN</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 w-full d-flex justify-content-center">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/tBgh6vayvnk?si=BauvjY8oNyhpibPv" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
 

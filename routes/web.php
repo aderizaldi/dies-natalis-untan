@@ -55,4 +55,8 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
 
     Route::get('/galeri/video', [GaleriController::class, 'galeriVideo'])->name('dashboard.galeri.video');
     Route::put('/galeri/video', [GaleriController::class, 'galeriVideoPut'])->name('dashboard.galeri.video.put');
+
+    Route::get('/profil', [UserController::class, 'profil'])->name('dashboard.profil');
+    Route::put('/profil', [UserController::class, 'profilPut'])->name('dashboard.profil.put');
+    Route::put('/profil/password', [UserController::class, 'profilPasswordPut'])->name('dashboard.profil.password.put');
 });

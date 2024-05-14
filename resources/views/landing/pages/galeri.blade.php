@@ -11,16 +11,15 @@
                     <h4>Video</h4>
                     {{-- iframe youtube --}}
                     <div class="row">
-                        <div class="col-12">
-                            <div class="galeri-item" style="height: 70vh">
-                                <iframe width="100%" height="100%" src="{{ $video->url }}" title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
+                        <div class="col-12 w-full d-flex justify-content-center">
+                            <iframe width="560" height="315" src="{{ $video->url }}" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
+                <hr class="mt-5">
 
                 <div class="galeri-foto mt-5">
                     <h4>Foto</h4>
