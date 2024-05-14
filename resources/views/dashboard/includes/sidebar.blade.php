@@ -56,17 +56,20 @@
                         <span>Agenda</span>
                     </a>
                 </li>
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ request()->is('admin/dashboard/sambutan*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-chat-square-quote-fill"></i>
                         <span>Kata Sambutan</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Rektor</a>
+                        <li
+                            class="submenu-item {{ request()->is('admin/dashboard/sambutan/rektor*') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard.sambutan_rektor') }}" class="submenu-link">Rektor</a>
                         </li>
-                        <li class="submenu-item  ">
-                            <a href="#" class="submenu-link">Ketua Panitia</a>
+                        <li
+                            class="submenu-item {{ request()->is('admin/dashboard/sambutan/ketua-panitia*') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard.sambutan_ketua_panitia') }}" class="submenu-link">Ketua
+                                Panitia</a>
                         </li>
                     </ul>
                 </li>

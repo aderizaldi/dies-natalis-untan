@@ -38,14 +38,14 @@
                                                     <ul class="timeline-panel-ul">
                                                         <div class="lefting-wrap">
                                                             <li class="img-wraping"><a
-                                                                    href="{{ route('detail_agenda', $agenda->slug) }}"><img
+                                                                    href="{{ $agenda->redirect ?? route('detail_agenda', $agenda->slug) }}"><img
                                                                         src="{{ filter_var($agenda->gambar, FILTER_VALIDATE_URL) ? $agenda->gambar : asset('storage/' . $agenda->gambar) }}"
                                                                         class="img-responsive" alt="user-image"
                                                                         loading="lazy" /></a>
                                                             </li>
                                                         </div>
                                                         <div class="righting-wrap">
-                                                            <li><a href="{{ route('detail_agenda', $agenda->slug) }}"
+                                                            <li><a href="{{ $agenda->redirect ?? route('detail_agenda', $agenda->slug) }}"
                                                                     class="importo">{{ $agenda->judul }}</a></li>
                                                             <li><span
                                                                     class="causale">{{ $agenda->deskripsi_singkat }}</span>
@@ -78,14 +78,14 @@
                                                     <ul class="timeline-panel-ul">
                                                         <div class="lefting-wrap">
                                                             <li class="img-wraping"><a
-                                                                    href="{{ route('detail_agenda', $agenda->slug) }}"><img
+                                                                    href="{{ $agenda->redirect ?? route('detail_agenda', $agenda->slug) }}"><img
                                                                         src="{{ filter_var($agenda->gambar, FILTER_VALIDATE_URL) ? $agenda->gambar : asset('storage/' . $agenda->gambar) }}"
                                                                         class="img-responsive" alt="user-image"
                                                                         loading="lazy" /></a>
                                                             </li>
                                                         </div>
                                                         <div class="righting-wrap">
-                                                            <li><a href="{{ route('detail_agenda', $agenda->slug) }}"
+                                                            <li><a href="{{ $agenda->redirect ?? route('detail_agenda', $agenda->slug) }}"
                                                                     class="importo">{{ $agenda->judul }}</a></li>
                                                             <li><span
                                                                     class="causale">{{ $agenda->deskripsi_singkat }}</span>

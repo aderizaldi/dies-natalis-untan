@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SambutanController;
 
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 Route::get('/agenda', [PageController::class, 'agenda'])->name('agenda');
@@ -36,4 +37,9 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::post('/berita', [BeritaController::class, 'beritaPost'])->name('dashboard.berita.post');
     Route::put('/berita/{id}', [BeritaController::class, 'beritaPut'])->name('dashboard.berita.put');
     Route::delete('/berita/{id}', [BeritaController::class, 'beritaDelete'])->name('dashboard.berita.delete');
+
+    Route::get('/sambutan/rektor', [SambutanController::class, 'sambutanRektor'])->name('dashboard.sambutan_rektor');
+    Route::put('/sambutan/rektor', [SambutanController::class, 'sambutanRektorPut'])->name('dashboard.sambutan_rektor.put');
+    Route::get('/sambutan/ketua-panitia', [SambutanController::class, 'sambutanKetuaPanitia'])->name('dashboard.sambutan_ketua_panitia');
+    Route::put('/sambutan/ketua-panitia', [SambutanController::class, 'sambutanKetuaPanitiaPut'])->name('dashboard.sambutan_ketua_panitia.put');
 });

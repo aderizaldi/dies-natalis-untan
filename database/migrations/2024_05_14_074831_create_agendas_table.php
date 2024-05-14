@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->longText('deskripsi')->nullable();
             $table->text('deskripsi_singkat')->nullable();
+            $table->string('redirect')->nullable();
             $table->timestamps();
         });
     }
