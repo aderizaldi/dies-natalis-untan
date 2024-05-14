@@ -50,8 +50,8 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->is('admin/dashboard/agenda*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.agenda') }}" class='sidebar-link'>
                         <i class="bi bi-calendar-day-fill"></i>
                         <span>Agenda</span>
                     </a>
@@ -76,8 +76,8 @@
                         <span>Logo</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->is('admin/dashboard/berita*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.berita') }}" class='sidebar-link'>
                         <i class="bi bi-newspaper"></i>
                         <span>Berita</span>
                     </a>

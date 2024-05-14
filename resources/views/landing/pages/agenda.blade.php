@@ -8,203 +8,97 @@
                 </div>
 
                 <div class="row">
-                    <div id="timeline">
-                        {{-- <div class="row timeline-movement timeline-movement-top">
+                    <div class="col-12">
+                        <div id="timeline">
+                            {{-- <div class="row timeline-movement timeline-movement-top">
                             <div class="timeline-badge timeline-future-movement">
                                 <p>2018</p>
                             </div>
                         </div> --}}
-                        <div class="row timeline-movement">
-                            <div class="timeline-badge center-left">
+                            @foreach ($agendas as $agenda)
+                                @if ($loop->odd)
+                                    <div class="row timeline-movement">
+                                        <div class="timeline-badge center-left">
 
-                            </div>
-                            <div class="col-md-6 timeline-item">
-                                <div class="row">
-                                    <div class="col-md-11">
-                                        <div class="timeline-panel credits">
-                                            <ul class="timeline-panel-ul">
-                                                <div class="lefting-wrap">
-                                                    <li class="img-wraping"><a
-                                                            href="{{ route('detail_agenda', 'detail-agenda') }}"><img
-                                                                src="http://via.placeholder.com/250/000000"
-                                                                class="img-responsive" alt="user-image" /></a></li>
-                                                </div>
-                                                <div class="righting-wrap">
-                                                    <li><a href="{{ route('detail_agenda', 'detail-agenda') }}"
-                                                            class="importo">Mussum ipsum cacilds</a></li>
-                                                    <li><span class="causale"
-                                                            style="color:#000; font-weight: 600;">Developer </span> </li>
-                                                    <li><span class="causale">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </span> </li>
-                                                    <li>
-                                                        <p><small class="text-muted"><i
-                                                                    class="glyphicon glyphicon-time"></i> 13/01/2018,
-                                                                13:05"</small></p>
-                                                    </li>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </ul>
                                         </div>
+                                        <div class="col-md-6 timeline-item">
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <div class="timeline-panel credits">
+                                                        <ul class="timeline-panel-ul">
+                                                            <div class="lefting-wrap">
+                                                                <li class="img-wraping"><a
+                                                                        href="{{ route('detail_agenda', $agenda->slug) }}"><img
+                                                                            src="{{ filter_var($agenda->gambar, FILTER_VALIDATE_URL) ? $agenda->gambar : asset('storage/' . $agenda->gambar) }}"
+                                                                            class="img-responsive" alt="user-image" /></a>
+                                                                </li>
+                                                            </div>
+                                                            <div class="righting-wrap">
+                                                                <li><a href="{{ route('detail_agenda', $agenda->slug) }}"
+                                                                        class="importo">{{ $agenda->judul }}</a></li>
+                                                                <li><span
+                                                                        class="causale">{{ $agenda->deskripsi_singkat }}</span>
+                                                                </li>
+                                                                <li>
+                                                                    <p><small class="text-muted"><i
+                                                                                class="glyphicon glyphicon-time"></i>
+                                                                            {{ $agenda->tanggal->format('d M Y, H:i') }}</small>
+                                                                    </p>
+                                                                </li>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </ul>
+                                                    </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row timeline-movement">
-                            <div class="timeline-badge center-right">
-
-                            </div>
-                            <div class="offset-md-6 col-md-6 timeline-item">
-                                <div class="row">
-                                    <div class="offset-sm-1 col-md-11">
-                                        <div class="timeline-panel debits">
-                                            <ul class="timeline-panel-ul">
-                                                <div class="lefting-wrap">
-                                                    <li class="img-wraping"><a
-                                                            href="{{ route('detail_agenda', 'detail-agenda') }}"><img
-                                                                src="http://via.placeholder.com/250/000000"
-                                                                class="img-responsive" alt="user-image" /></a></li>
                                                 </div>
-                                                <div class="righting-wrap">
-                                                    <li><a href="{{ route('detail_agenda', 'detail-agenda') }}"
-                                                            class="importo">Mussum ipsum cacilds</a></li>
-                                                    <li><span class="causale" style="color:#000; font-weight: 600;">Web
-                                                            Designer </span> </li>
-                                                    <li><span class="causale">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </span> </li>
-                                                    <li>
-                                                        <p><small class="text-muted"><i
-                                                                    class="glyphicon glyphicon-time"></i> 12/01/2018,
-                                                                13:05"</small></p>
-                                                    </li>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row timeline-movement">
-                            <div class="timeline-badge center-left">
-
-                            </div>
-                            <div class="col-md-6 timeline-item">
-                                <div class="row">
-                                    <div class="col-md-11">
-                                        <div class="timeline-panel credits">
-                                            <ul class="timeline-panel-ul">
-                                                <div class="lefting-wrap">
-                                                    <li class="img-wraping"><a
-                                                            href="{{ route('detail_agenda', 'detail-agenda') }}"><img
-                                                                src="http://via.placeholder.com/250/000000"
-                                                                class="img-responsive" alt="user-image" /></a></li>
-                                                </div>
-                                                <div class="righting-wrap">
-                                                    <li><a href="{{ route('detail_agenda', 'detail-agenda') }}"
-                                                            class="importo">Mussum ipsum cacilds</a></li>
-                                                    <li><span class="causale" style="color:#000; font-weight: 600;">Engineer
-                                                        </span> </li>
-                                                    <li><span class="causale">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </span> </li>
-                                                    <li>
-                                                        <p><small class="text-muted"><i
-                                                                    class="glyphicon glyphicon-time"></i> 11/01/2018,
-                                                                13:05"</small></p>
-                                                    </li>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- <div class="row timeline-movement timeline-movement-top">
-                            <div class="timeline-badge timeline-future-movement">
-                                <p>2017</p>
-                            </div>
-                        </div> --}}
-
-
-                        <div class="row timeline-movement">
-                            <div class="timeline-badge center-right">
-
-                            </div>
-                            <div class="offset-md-6 col-md-6 timeline-item">
-                                <div class="row">
-                                    <div class="offset-sm-1 col-md-11">
-                                        <div class="timeline-panel debits">
-                                            <ul class="timeline-panel-ul">
-                                                <div class="lefting-wrap">
-                                                    <li class="img-wraping"><a
-                                                            href="{{ route('detail_agenda', 'detail-agenda') }}"><img
-                                                                src="http://via.placeholder.com/250/000000"
-                                                                class="img-responsive" alt="user-image" /></a></li>
-                                                </div>
-                                                <div class="righting-wrap">
-                                                    <li><a href="{{ route('detail_agenda', 'detail-agenda') }}"
-                                                            class="importo">Mussum ipsum cacilds</a></li>
-                                                    <li><span class="causale" style="color:#000; font-weight: 600;">Web
-                                                            Designer </span> </li>
-                                                    <li><span class="causale">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </span> </li>
-                                                    <li>
-                                                        <p><small class="text-muted"><i
-                                                                    class="glyphicon glyphicon-time"></i> 12/01/2018,
-                                                                13:05"</small></p>
-                                                    </li>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row timeline-movement">
-                            <div class="timeline-badge center-left">
-
-                            </div>
-                            <div class="col-md-6 timeline-item">
-                                <div class="row">
-                                    <div class="col-md-11">
-                                        <div class="timeline-panel credits">
-                                            <ul class="timeline-panel-ul">
-                                                <div class="lefting-wrap">
-                                                    <li class="img-wraping"><a
-                                                            href="{{ route('detail_agenda', 'detail-agenda') }}"><img
-                                                                src="http://via.placeholder.com/250/000000"
-                                                                class="img-responsive" alt="user-image" /></a></li>
-                                                </div>
-                                                <div class="righting-wrap">
-                                                    <li><a href="{{ route('detail_agenda', 'detail-agenda') }}"
-                                                            class="importo">Mussum ipsum cacilds</a></li>
-                                                    <li><span class="causale"
-                                                            style="color:#000; font-weight: 600;">Engineer </span> </li>
-                                                    <li><span class="causale">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </span> </li>
-                                                    <li>
-                                                        <p><small class="text-muted"><i
-                                                                    class="glyphicon glyphicon-time"></i> 11/01/2018,
-                                                                13:05"</small></p>
-                                                    </li>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                @endif
+                                @if ($loop->even)
+                                    <div class="row timeline-movement">
+                                        <div class="timeline-badge center-right">
+
+                                        </div>
+                                        <div class="offset-md-6 col-md-6 timeline-item">
+                                            <div class="row">
+                                                <div class="offset-sm-1 col-md-11">
+                                                    <div class="timeline-panel debits">
+                                                        <ul class="timeline-panel-ul">
+                                                            <div class="lefting-wrap">
+                                                                <li class="img-wraping"><a
+                                                                        href="{{ route('detail_agenda', $agenda->slug) }}"><img
+                                                                            src="{{ filter_var($agenda->gambar, FILTER_VALIDATE_URL) ? $agenda->gambar : asset('storage/' . $agenda->gambar) }}"
+                                                                            class="img-responsive" alt="user-image" /></a>
+                                                                </li>
+                                                            </div>
+                                                            <div class="righting-wrap">
+                                                                <li><a href="{{ route('detail_agenda', $agenda->slug) }}"
+                                                                        class="importo">{{ $agenda->judul }}</a></li>
+                                                                <li><span
+                                                                        class="causale">{{ $agenda->deskripsi_singkat }}</span>
+                                                                </li>
+                                                                <li>
+                                                                    <p><small class="text-muted"><i
+                                                                                class="glyphicon glyphicon-time"></i>
+                                                                            {{ $agenda->tanggal->format('d M Y, H:i') }}</small>
+                                                                    </p>
+                                                                </li>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
+                    </div>
+                    <div class="col-12 w-full d-flex justify-content-center">
+                        {{ $agendas->links() }}
                     </div>
                 </div>
 

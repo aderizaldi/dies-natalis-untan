@@ -9,134 +9,31 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    @foreach ($beritas as $berita)
+                        <div class="col-lg-4 py-3 col-md-12">
+                            <a href="{{ route('detail_berita', $berita->slug) }}">
+                                <div class="card border border-0 shadow-sm rounded">
+                                    <img src="{{ filter_var($berita->gambar, FILTER_VALIDATE_URL) ? $berita->gambar : asset('storage/' . $berita->gambar) }}"
+                                        class="card-img-top" alt="..." style="height: 200px; object-fit: cover;"
+                                        loading="lazy">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $berita->judul }}</h5>
+                                        <div class="tags">
+                                            @foreach ($berita->beritaTags as $tag)
+                                                <span class="badge bg-primary">{{ $tag->tag }}</span>
+                                            @endforeach
+                                        </div>
+                                        <p class="card-text"><small
+                                                class="text-muted">{{ $berita->tanggal->format('d M Y H:i') }}</small></p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 py-3 col-md-12">
-                        <a href="{{ route('detail_berita', 'detail-berita') }}">
-                            <div class="card border border-0 shadow-sm rounded">
-                                <img src="http://via.placeholder.com/250/000000" class="card-img-top" alt="..."
-                                    style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                    @endforeach
+                    <div class="col-12 w-full d-flex justify-content-center mt-5">
+                        {{ $beritas->links() }}
                     </div>
                 </div>
-
             </div>
         </section>
     </main>

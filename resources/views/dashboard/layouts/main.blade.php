@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="{{ asset('assets-admin/compiled/css/iconly.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets-admin/extensions/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets-admin/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets-admin/compiled/css/table-datatable-jquery.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets-admin/extensions/quill/quill.snow.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets-admin/extensions/quill/quill.bubble.css') }}">
     @stack('styles')
 </head>
 
@@ -26,12 +31,15 @@
         </div>
     </div>
 
-    <script src="{{asset('assets-admin/static/js/components/dark.js') }}"></script>
-    <script src="{{asset('assets-admin/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-
-    <script src="{{asset('assets-admin/compiled/js/app.js') }}"></script>
-
+    <script src="{{ asset('assets-admin/extensions/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/static/js/components/dark.js') }}"></script>
+    <script src="{{ asset('assets-admin/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets-admin/extensions/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/extensions/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/static/js/pages/quill.js') }}"></script>
+    <script src="{{ asset('assets-admin/compiled/js/app.js') }}"></script>
 
     <script>
         const Toast = Swal.mixin({
@@ -64,6 +72,34 @@
                 title: '{{ session('success') }}'
             });
         @endif
+    </script>
+
+    <script>
+        let jquery_datatable = $(".dataTables-basic").DataTable({
+            responsive: true
+        })
+        let customized_datatable = $(".dataTables").DataTable({
+            responsive: true,
+            stateSave: true,
+            pagingType: 'simple',
+            dom: "<'row'<'col-3'l><'col-9'f>>" +
+                "<'row dt-row'<'col-sm-12'tr>>" +
+                "<'row'<'col-4'i><'col-8'p>>",
+            "language": {
+                "info": "Page _PAGE_ of _PAGES_",
+                "lengthMenu": "_MENU_ ",
+                "search": "",
+                "searchPlaceholder": "Search.."
+            }
+        })
+
+        const setTableColor = () => {
+            document.querySelectorAll('.dataTables_paginate .pagination').forEach(dt => {
+                dt.classList.add('pagination-primary')
+            })
+        }
+        setTableColor()
+        jquery_datatable.on('draw', setTableColor)
     </script>
 
     @stack('scripts')

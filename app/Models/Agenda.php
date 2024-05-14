@@ -14,4 +14,5 @@ class Agenda extends Model
     protected $casts = [
         'tanggal' => 'datetime:Y-m-d H:i:s',
     ];
+
 }

@@ -2078,7 +2078,7 @@ section {
     .timeline-panel-ul
     li
     a.importo {
-    color: #468c1f;
+    color: #023e8a;
     font-size: 1.3em;
     font-weight: 600;
 }
@@ -2095,7 +2095,7 @@ section {
     .timeline-panel.debits
     .timeline-panel-ul
     a.importo {
-    color: #e2001a;
+    color: #023e8a;
     font-size: 1.3em;
     font-weight: 600;
 }

@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 Route::get('/agenda', [PageController::class, 'agenda'])->name('agenda');
@@ -24,4 +26,14 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/agenda', [AgendaController::class, 'agenda'])->name('dashboard.agenda');
+    Route::post('/agenda', [AgendaController::class, 'agendaPost'])->name('dashboard.agenda.post');
+    Route::put('/agenda/{id}', [AgendaController::class, 'agendaPut'])->name('dashboard.agenda.put');
+    Route::delete('/agenda/{id}', [AgendaController::class, 'agendaDelete'])->name('dashboard.agenda.delete');
+
+    Route::get('/berita', [BeritaController::class, 'berita'])->name('dashboard.berita');
+    Route::post('/berita', [BeritaController::class, 'beritaPost'])->name('dashboard.berita.post');
+    Route::put('/berita/{id}', [BeritaController::class, 'beritaPut'])->name('dashboard.berita.put');
+    Route::delete('/berita/{id}', [BeritaController::class, 'beritaDelete'])->name('dashboard.berita.delete');
 });

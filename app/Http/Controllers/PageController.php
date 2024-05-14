@@ -2,23 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function beranda()
     {
-        return view('landing.pages.beranda');
+        $agendas = Agenda::orderByDesc('tanggal')->limit(6)->get();
+        $beritas = Berita::orderByDesc('tanggal')->limit(3)->get();
+        return view('landing.pages.beranda', compact('agendas', 'beritas'));
     }
 
     public function agenda()
     {
-        return view('landing.pages.agenda');
+        $agendas = Agenda::orderByDesc('tanggal')->simplePaginate(6);
+        return view('landing.pages.agenda', compact('agendas'));
     }
 
     public function berita()
     {
-        return view('landing.pages.berita');
+        $beritas = Berita::latest()->simplePaginate(6);
+        return view('landing.pages.berita', compact('beritas'));
     }
 
     public function sambutan_rektor()
@@ -41,13 +47,19 @@ class PageController extends Controller
         return view('landing.pages.galeri');
     }
 
-    public function detail_berita()
+    public function detail_berita($slug)
     {
-        return view('landing.pages.detail_berita');
+        $berita = Berita::where('slug', $slug)->first();
+        if (!$berita) return abort(404);
+
+        return view('landing.pages.detail_berita', compact('berita'));
     }
 
-    public function detail_agenda()
+    public function detail_agenda($slug)
     {
-        return view('landing.pages.detail_agenda');
+        $agenda = Agenda::where('slug', $slug)->first();
+        if (!$agenda) return abort(404);
+
+        return view('landing.pages.detail_agenda', compact('agenda'));
     }
 }

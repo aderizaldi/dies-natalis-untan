@@ -30,9 +30,7 @@ class DatabaseSeeder extends Seeder
         ])->assignRole('SUPERADMIN');
 
         Agenda::factory(10)->create();
-        Berita::factory(12)->create()->each(function ($berita) {
-            $berita->beritaTags()->saveMany(BeritaTag::factory(3)->make());
-        });
+        Berita::factory(12)->has(BeritaTag::factory()->count(3))->create();
         Galeri::factory(9)->create();
         $this->call(LogoSeeder::class);
         $this->call(SambutanSeeder::class);
