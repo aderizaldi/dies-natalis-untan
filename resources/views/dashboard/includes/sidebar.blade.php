@@ -73,8 +73,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->is('admin/dashboard/logo*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.logo') }}" class='sidebar-link'>
                         <i class="bi bi-emoji-laughing-fill"></i>
                         <span>Logo</span>
                     </a>

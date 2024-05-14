@@ -2,7 +2,7 @@
 @section('content')
     <section id="hero" class="d-flex align-items-center">
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
-            <h1>Dies Natalis Untan Ke-66</h1>
+            <h1>Dies Natalis Untan Ke-65</h1>
             <h2>Menuju Masa Depan Berkelanjutan: Aksi Transisi Ke Ekonomi Hijau</h2>
             <div class="d-flex">
                 <a href="{{ route('agenda') }}" class="btn-get-started scrollto">Lihat Agenda</a>

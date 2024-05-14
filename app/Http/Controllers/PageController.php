@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Logo;
 use App\Models\Agenda;
 use App\Models\Berita;
+use App\Models\Sambutan;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -29,17 +31,20 @@ class PageController extends Controller
 
     public function sambutan_rektor()
     {
-        return view('landing.pages.sambutan_rektor');
+        $sambutan = Sambutan::where('tipe', 'rektor')->first();
+        return view('landing.pages.sambutan_rektor', compact('sambutan'));
     }
 
     public function sambutan_ketua_panitia()
     {
-        return view('landing.pages.sambutan_ketua_panitia');
+        $sambutan = Sambutan::where('tipe', 'ketua_panitia')->first();
+        return view('landing.pages.sambutan_ketua_panitia', compact('sambutan'));
     }
 
     public function logo()
     {
-        return view('landing.pages.logo');
+        $logo = Logo::latest()->first();
+        return view('landing.pages.logo', compact('logo'));
     }
 
     public function galeri()

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LogoController;
 use App\Http\Controllers\SambutanController;
 
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
@@ -42,4 +43,7 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::put('/sambutan/rektor', [SambutanController::class, 'sambutanRektorPut'])->name('dashboard.sambutan_rektor.put');
     Route::get('/sambutan/ketua-panitia', [SambutanController::class, 'sambutanKetuaPanitia'])->name('dashboard.sambutan_ketua_panitia');
     Route::put('/sambutan/ketua-panitia', [SambutanController::class, 'sambutanKetuaPanitiaPut'])->name('dashboard.sambutan_ketua_panitia.put');
+
+    Route::get('/logo', [LogoController::class, 'logo'])->name('dashboard.logo');
+    Route::put('/logo', [LogoController::class, 'logoPut'])->name('dashboard.logo.put');
 });
