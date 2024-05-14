@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Agenda;
+use App\Models\Berita;
+use App\Models\BeritaTag;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Galeri;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,8 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(RolesSeeder::class);
-        // User::factory(10)->create();
-
+        // User::factory(10)->create()
         User::factory()->create([
             'nama' => 'Admin',
             'username' => 'admin',
@@ -25,5 +28,13 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Superadmin',
             'username' => 'superadmin',
         ])->assignRole('SUPERADMIN');
+
+        Agenda::factory(10)->create();
+        Berita::factory(12)->create()->each(function ($berita) {
+            $berita->beritaTags()->saveMany(BeritaTag::factory(3)->make());
+        });
+        Galeri::factory(9)->create();
+        $this->call(LogoSeeder::class);
+        $this->call(SambutanSeeder::class);
     }
 }
