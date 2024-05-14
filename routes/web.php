@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\SambutanController;
 
@@ -46,4 +47,8 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
 
     Route::get('/logo', [LogoController::class, 'logo'])->name('dashboard.logo');
     Route::put('/logo', [LogoController::class, 'logoPut'])->name('dashboard.logo.put');
+
+    Route::get('/galeri/gambar', [GaleriController::class, 'galeriGambar'])->name('dashboard.galeri.gambar');
+    Route::get('/galeri/video', [GaleriController::class, 'galeriVideo'])->name('dashboard.galeri.video');
+    Route::put('/galeri/video', [GaleriController::class, 'galeriVideoPut'])->name('dashboard.galeri.video.put');
 });

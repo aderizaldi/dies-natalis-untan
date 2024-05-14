@@ -85,17 +85,17 @@
                         <span>Berita</span>
                     </a>
                 </li>
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ request()->is('admin/dashboard/galeri*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-image-fill"></i>
                         <span>Galeri</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Foto</a>
+                        <li class="submenu-item {{ request()->is('admin/dashboard/galeri/gambar*') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard.galeri.gambar') }}" class="submenu-link">Foto</a>
                         </li>
-                        <li class="submenu-item  ">
-                            <a href="#" class="submenu-link">Video</a>
+                        <li class="submenu-item {{ request()->is('admin/dashboard/galeri/video*') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard.galeri.video') }}" class="submenu-link">Video</a>
                         </li>
                     </ul>
                 </li>

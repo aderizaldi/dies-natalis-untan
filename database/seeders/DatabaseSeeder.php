@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         Galeri::factory(9)->create();
         $this->call(LogoSeeder::class);
         $this->call(SambutanSeeder::class);
+        $this->call(GaleriVideoSeeder::class);
     }
 }
