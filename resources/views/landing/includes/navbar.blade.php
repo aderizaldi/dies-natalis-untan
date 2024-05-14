@@ -4,7 +4,7 @@
         {{-- <h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1> --}}
         <!-- Uncomment below if you prefer to use an image logo -->
         <a href="{{ route('beranda') }}" class="logo"><img src="{{ asset('assets/img/logo.png') }}"
-                alt=""><span>DIES NATALIS
+                alt=""><span class="text-primary">DIES NATALIS
                 UNTAN</span></a>
 
         <nav id="navbar" class="navbar">
