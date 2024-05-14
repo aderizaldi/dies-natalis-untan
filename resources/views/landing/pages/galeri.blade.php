@@ -1,13 +1,12 @@
 @extends('landing.layouts.main')
 @section('content')
     <main id="main">
-        <section id="portfolio" class="portfolio">
+        <section id="portfolio" class="portfolio section-bg">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
                     <h3>Galeri</h3>
                 </div>
-
                 <div class="galeri-video">
                     <h4>Video</h4>
                     {{-- iframe youtube --}}
