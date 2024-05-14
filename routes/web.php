@@ -49,6 +49,10 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::put('/logo', [LogoController::class, 'logoPut'])->name('dashboard.logo.put');
 
     Route::get('/galeri/gambar', [GaleriController::class, 'galeriGambar'])->name('dashboard.galeri.gambar');
+    Route::post('/galeri/gambar', [GaleriController::class, 'galeriGambarPost'])->name('dashboard.galeri.gambar.post');
+    Route::put('/galeri/gambar/{id}', [GaleriController::class, 'galeriGambarPut'])->name('dashboard.galeri.gambar.put');
+    Route::delete('/galeri/gambar/{id}', [GaleriController::class, 'galeriGambarDelete'])->name('dashboard.galeri.gambar.delete');
+
     Route::get('/galeri/video', [GaleriController::class, 'galeriVideo'])->name('dashboard.galeri.video');
     Route::put('/galeri/video', [GaleriController::class, 'galeriVideoPut'])->name('dashboard.galeri.video.put');
 });

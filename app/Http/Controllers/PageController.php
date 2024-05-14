@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Logo;
 use App\Models\Agenda;
 use App\Models\Berita;
+use App\Models\Galeri;
 use App\Models\Sambutan;
 use App\Models\GaleriVideo;
 use Illuminate\Http\Request;
@@ -50,8 +51,9 @@ class PageController extends Controller
 
     public function galeri()
     {
+        $gambars = Galeri::latest()->get();
         $video = GaleriVideo::latest()->first();
-        return view('landing.pages.galeri', compact('video'));
+        return view('landing.pages.galeri', compact('video', 'gambars'));
     }
 
     public function detail_berita($slug)

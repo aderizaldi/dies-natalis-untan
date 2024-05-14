@@ -6,7 +6,7 @@
         </a>
     </header>
     <div class="page-heading">
-        <h3>Video</h3>
+        <h3>Galeri Video</h3>
     </div>
     <div class="page-content" style="min-height: 70vh;">
         <section class="row">
@@ -24,6 +24,8 @@
                                                 <label for="url" class="form-label">URL Iframe Youtube</label>
                                                 <input type="text" class="form-control" id="url" name="url"
                                                     required value="{{ $video->url }}">
+                                                <span class="text-muted text-sm">Masukkan url embed dari video
+                                                    youtube</span>
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">

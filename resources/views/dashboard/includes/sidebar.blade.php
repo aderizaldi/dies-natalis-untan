@@ -92,7 +92,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item {{ request()->is('admin/dashboard/galeri/gambar*') ? 'active' : '' }}">
-                            <a href="{{ route('dashboard.galeri.gambar') }}" class="submenu-link">Foto</a>
+                            <a href="{{ route('dashboard.galeri.gambar') }}" class="submenu-link">Gambar</a>
                         </li>
                         <li class="submenu-item {{ request()->is('admin/dashboard/galeri/video*') ? 'active' : '' }}">
                             <a href="{{ route('dashboard.galeri.video') }}" class="submenu-link">Video</a>
