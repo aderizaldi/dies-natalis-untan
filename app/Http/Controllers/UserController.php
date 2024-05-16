@@ -63,13 +63,13 @@ class UserController extends Controller
     public function profilPut(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'nama' => 'required|string',
             'username' => 'required|string|unique:users,username,' . auth()->user()->id,
         ]);
 
         $user = User::find(auth()->user()->id);
         $user->username = $request->username;
-        $user->name = $request->name;
+        $user->nama = $request->nama;
         $user->save();
 
         return redirect()->route('dashboard.profil')->with('success', 'Profil berhasil diperbarui.');
