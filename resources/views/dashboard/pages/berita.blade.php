@@ -140,7 +140,7 @@
                                     value="{{ $berita->judul }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="tags" class="form-label">Deskripsi Singkat</label>
+                                <label for="tags" class="form-label">Tags</label>
                                 <input type="text" class="form-control" id="tags" name="tags"
                                     value="{{ implode(',',$berita->beritaTags->map(function ($item) {return $item->tag;})->toArray()) }}"
                                     required>
