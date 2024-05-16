@@ -3,8 +3,8 @@
 
         {{-- <h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1> --}}
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="{{ route('beranda') }}" class="logo"><img src="{{ asset('assets/img/logo.png') }}"
-                alt=""><span class="text-primary">DIES NATALIS
+        <a href="{{ route('beranda') }}" class="logo"><img src="{{ asset('assets/img/logo.png') }}" alt=""><span
+                class="text-primary">DIES NATALIS
                 UNTAN</span></a>
 
         <nav id="navbar" class="navbar">
@@ -28,6 +28,8 @@
                         href="{{ route('berita') }}">Berita</a></li>
                 <li><a class="nav-link {{ request()->is('galeri*') ? 'active' : '' }}"
                         href="{{ route('galeri') }}">Galeri</a></li>
+                <li><a class="nav-link {{ request()->is('livestream*') ? 'active' : '' }}"
+                        href="{{ route('livestream') }}">Livestream</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

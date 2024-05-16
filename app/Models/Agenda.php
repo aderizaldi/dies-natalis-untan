@@ -15,4 +15,9 @@ class Agenda extends Model
         'tanggal' => 'datetime:Y-m-d H:i:s',
     ];
 
+    public function formAgendas()
+    {
+        return $this->hasMany(FormAgenda::class);
+    }
+
 }

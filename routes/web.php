@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\SambutanController;
+use App\Http\Controllers\SettingController;
 
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 Route::get('/agenda', [PageController::class, 'agenda'])->name('agenda');
@@ -19,6 +20,7 @@ Route::get('/logo', [PageController::class, 'logo'])->name('logo');
 Route::get('/galeri', [PageController::class, 'galeri'])->name('galeri');
 Route::get('/berita/{slug}', [PageController::class, 'detail_berita'])->name('detail_berita');
 Route::get('/agenda/{slug}', [PageController::class, 'detail_agenda'])->name('detail_agenda');
+Route::get('/livestream', [PageController::class, 'livestream'])->name('livestream');
 
 
 Route::prefix('auth')->group(function () {
@@ -59,4 +61,11 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::get('/profil', [UserController::class, 'profil'])->name('dashboard.profil');
     Route::put('/profil', [UserController::class, 'profilPut'])->name('dashboard.profil.put');
     Route::put('/profil/password', [UserController::class, 'profilPasswordPut'])->name('dashboard.profil.password.put');
+
+    Route::get('/gambar-header', [SettingController::class, 'gambarHeader'])->name('dashboard.gambar_header');
+    Route::put('/gambar-header', [SettingController::class, 'gambarHeaderPut'])->name('dashboard.gambar_header.put');
+    Route::get('/video-testimoni', [SettingController::class, 'videoTestimoni'])->name('dashboard.video_testimoni');
+    Route::put('/video-testimoni', [SettingController::class, 'videoTestimoniPut'])->name('dashboard.video_testimoni.put');
+    Route::get('/video-livestream', [SettingController::class, 'videoLivestream'])->name('dashboard.video_livestream');
+    Route::put('/video-livestream', [SettingController::class, 'videoLivestreamPut'])->name('dashboard.video_livestream.put');
 });

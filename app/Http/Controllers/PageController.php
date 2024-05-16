@@ -8,15 +8,18 @@ use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Sambutan;
 use App\Models\GaleriVideo;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function beranda()
     {
+        $video_testimoni = Setting::where('key', 'VIDEO_TESTIMONI')->first();
+        $gambar_header = Setting::where('key', 'GAMBAR_HEADER')->first();
         $agendas = Agenda::orderBy('tanggal')->limit(6)->get();
         $beritas = Berita::orderByDesc('tanggal')->limit(3)->get();
-        return view('landing.pages.beranda', compact('agendas', 'beritas'));
+        return view('landing.pages.beranda', compact('agendas', 'beritas', 'video_testimoni', 'gambar_header'));
     }
 
     public function agenda()
@@ -70,5 +73,11 @@ class PageController extends Controller
         if (!$agenda) return abort(404);
 
         return view('landing.pages.detail_agenda', compact('agenda'));
+    }
+
+    public function livestream()
+    {
+        $video_livestream = Setting::where('key', 'VIDEO_LIVESTREAM')->first();
+        return view('landing.pages.livestream', compact('video_livestream'));
     }
 }

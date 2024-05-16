@@ -1,6 +1,12 @@
 @extends('landing.layouts.main')
 @section('content')
-    <section id="hero" class="d-flex align-items-center">
+    <section id="hero" class="d-flex align-items-center"
+        style="
+        background: url('{{ asset('storage/' . $gambar_header->value) }}') top left; width: 100%;
+        height: 85vh;
+        background-size: cover;
+        position: relative;
+        ">
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
             <h1>Dies Natalis ke-65 Universitas Tanjungpura</h1>
             <h2>Menuju Masa Depan Berkelanjutan: Aksi Transisi Ke Ekonomi Hijau</h2>
@@ -163,9 +169,8 @@
 
                 <div class="row">
                     <div class="col-12 w-full d-flex justify-content-center">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/tBgh6vayvnk?si=BauvjY8oNyhpibPv" title="YouTube video player"
-                            frameborder="0"
+                        <iframe width="560" height="315" src="{{ $video_testimoni->value }}"
+                            title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>

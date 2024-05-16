@@ -6,7 +6,7 @@
         </a>
     </header>
     <div class="page-heading">
-        <h3>Galeri Video</h3>
+        <h3>Gambar Header</h3>
     </div>
     <div class="page-content" style="min-height: 70vh;">
         <section class="row">
@@ -16,16 +16,16 @@
                         <div class="card-body">
                             <div class="form-body">
                                 <div class="row">
-                                    <form action="{{ route('dashboard.galeri.video.put') }}" method="POST">
+                                    <form action="{{ route('dashboard.gambar_header.put') }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         @method('put')
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="url" class="form-label">URL Iframe Youtube</label>
-                                                <input type="text" class="form-control" id="url" name="url"
-                                                    required value="{{ $video->url }}">
-                                                <span class="text-muted text-sm">Masukkan url embed dari video
-                                                    youtube</span>
+                                                <label for="gambar" class="form-label">Gambar</label>
+                                                <input type="file" class="form-control" id="gambar" name="gambar"
+                                                    required>
+                                                <span class="text-muted text-sm">Max size 20MB</span>
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
@@ -41,9 +41,7 @@
                 </div>
             </div>
             <div class="col-12 w-full d-flex justify-content-center mb-5">
-                <iframe width="560" height="315" src="{{ $video->url }}" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                <img src="{{ asset('storage/' . $gambar->value) }}" alt="gambar_header" class="img-fluid">
             </div>
         </section>
     </div>

@@ -100,6 +100,26 @@
                     </ul>
                 </li>
 
+                <li class="sidebar-title">Web</li>
+                <li class="sidebar-item {{ request()->is('admin/dashboard/gambar-header*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.gambar_header') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Gambar Header</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ request()->is('admin/dashboard/video-testimoni*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.video_testimoni') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Video Testimoni</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ request()->is('admin/dashboard/video-livestream*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.video_livestream') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Video Livestream</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-title">Pengaturan</li>
                 <li class="sidebar-item {{ request()->is('admin/dashboard/profil*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard.profil') }}" class='sidebar-link'>
