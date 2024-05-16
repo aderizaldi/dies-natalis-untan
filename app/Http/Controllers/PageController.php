@@ -14,14 +14,14 @@ class PageController extends Controller
 {
     public function beranda()
     {
-        $agendas = Agenda::orderByDesc('tanggal')->limit(6)->get();
+        $agendas = Agenda::orderBy('tanggal')->limit(6)->get();
         $beritas = Berita::orderByDesc('tanggal')->limit(3)->get();
         return view('landing.pages.beranda', compact('agendas', 'beritas'));
     }
 
     public function agenda()
     {
-        $agendas = Agenda::orderByDesc('tanggal')->simplePaginate(6);
+        $agendas = Agenda::orderBy('tanggal')->simplePaginate(6);
         return view('landing.pages.agenda', compact('agendas'));
     }
 
