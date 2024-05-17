@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\StatusPesertaEnum;
 use App\Models\Logo;
 use App\Models\Agenda;
 use App\Models\Berita;
-use App\Models\FormAgenda;
 use App\Models\Galeri;
-use App\Models\Sambutan;
-use App\Models\GaleriVideo;
 use App\Models\Setting;
+use App\Models\Sambutan;
+use App\Models\FormAgenda;
+use App\Models\GaleriVideo;
 use Illuminate\Http\Request;
+use App\Enums\JenisKelaminEnum;
+use App\Enums\StatusPesertaEnum;
+use Illuminate\Support\Facades\Cache;
 
 class PageController extends Controller
 {
@@ -99,7 +101,7 @@ class PageController extends Controller
         $request->validate([
             'status_peserta' => 'required|in:' . implode(',', StatusPesertaEnum::getValues()),
             'nama' => 'required|string|max:255',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required|in:' . implode(',', JenisKelaminEnum::getValues()),
             'umur' => 'required|integer',
             'no_hp' => 'required|string|max:15',
             'alamat' => 'nullable|string',
@@ -120,6 +122,18 @@ class PageController extends Controller
             'alamat' => $request->alamat,
             'saran' => $request->saran,
         ]);
+
+        Cache::put('registered', [
+            'agenda_id' => $agenda->id,
+            'nomor_peserta' => $nomor_peserta,
+            'status_peserta' => $request->status_peserta,
+            'nama' => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'umur' => $request->umur,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'saran' => $request->saran,
+        ], 60 * 60 * 24 * 30 * 12 * 5);
 
         return redirect()->back()->with('success', 'Berhasil melakukan presensi');
     }
