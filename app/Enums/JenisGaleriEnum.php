@@ -12,5 +12,5 @@ use BenSampo\Enum\Enum;
 final class JenisGaleriEnum extends Enum
 {
     const KEGIATAN = "Kegiatan";
-    const SELAMAT_DATANG = "Selamat Datang";
+    const UCAPAN_SELAMAT = "Ucapan Selamat";
 }

@@ -49,7 +49,7 @@ class AgendaController extends Controller
             'redirect' => 'nullable|url',
         ]);
 
-        $agenda = Agenda::find($id);
+        $agenda = Agenda::findOrFail($id);
         $agenda->tanggal = $request->tanggal;
         $agenda->judul = $request->judul;
         $agenda->deskripsi = $request->deskripsi;
@@ -70,11 +70,18 @@ class AgendaController extends Controller
 
     public function agendaDelete($id)
     {
-        $agenda = Agenda::find($id);
+        $agenda = Agenda::findOrFail($id);
         if (filter_var($agenda->gambar, FILTER_VALIDATE_URL)) Storage::delete('public/' . $agenda->gambar);
         $agenda->delete();
 
         return redirect()->back()->with('success', 'Berhasil menghapus agenda');
+    }
+
+    public function presensiAgenda($id)
+    {
+        $agenda = Agenda::findOrFail($id);
+        $form_agendas = $agenda->formAgendas;
+        return view('dashboard.pages.form_agenda', compact('agenda', 'form_agendas'));
     }
 
     /*

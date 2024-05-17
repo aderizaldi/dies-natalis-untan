@@ -61,9 +61,9 @@ class PageController extends Controller
     public function galeri()
     {
         $gambar_kegiatan = Galeri::where('jenis', JenisGaleriEnum::KEGIATAN)->latest()->simplePaginate(6, ['*'], 'kegiatan');
-        $gambar_selamat_datang = Galeri::where('jenis', JenisGaleriEnum::SELAMAT_DATANG)->latest()->simplePaginate(6, ['*'], 'selamat-datang');
+        $gambar_ucapan_selamat = Galeri::where('jenis', JenisGaleriEnum::UCAPAN_SELAMAT)->latest()->simplePaginate(6, ['*'], 'ucapan-selamat');
         $video = GaleriVideo::latest()->first();
-        return view('landing.pages.galeri', compact('video', 'gambar_kegiatan', 'gambar_selamat_datang'));
+        return view('landing.pages.galeri', compact('video', 'gambar_kegiatan', 'gambar_ucapan_selamat'));
     }
 
     public function detail_berita($slug)

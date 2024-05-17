@@ -27,7 +27,7 @@
                                     <th data-searchable="false" data-sortable="false">Gambar</th>
                                     <th>Judul</th>
                                     <th>Deskripsi Singkat</th>
-                                    <th data-searchable="false" data-sortable="false" data-width="180">Aksi</th>
+                                    <th data-searchable="false" data-sortable="false" data-width="240">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,6 +47,9 @@
                                                 data-bs-toggle="modal" data-bs-target="#qrcode-{{ $agenda->id }}"><span
                                                     class="bi bi-qr-code"></span>
                                             </button>
+                                            <a href="{{ route('dashboard.agenda.presensi', $agenda->id) }}"
+                                                class="btn btn-success btn-sm mb-1"><span
+                                                    class="bi bi-person-check"></span></a>
                                             <button type="button" class="btn btn-warning btn-sm mb-1"
                                                 data-bs-toggle="modal" data-bs-target="#edit-{{ $agenda->id }}"><span
                                                     class="bi bi-pencil-square"></span></button>

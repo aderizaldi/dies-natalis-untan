@@ -38,6 +38,7 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::post('/agenda', [AgendaController::class, 'agendaPost'])->name('dashboard.agenda.post');
     Route::put('/agenda/{id}', [AgendaController::class, 'agendaPut'])->name('dashboard.agenda.put');
     Route::delete('/agenda/{id}', [AgendaController::class, 'agendaDelete'])->name('dashboard.agenda.delete');
+    Route::get('/agenda/presensi/{id}', [AgendaController::class, 'presensiAgenda'])->name('dashboard.agenda.presensi');
     Route::get('/agenda/qr-code/{id}', [AgendaController::class, 'qrCodeAgenda'])->name('dashboard.agenda.qr_code');
 
     Route::get('/berita', [BeritaController::class, 'berita'])->name('dashboard.berita');
