@@ -21,6 +21,8 @@ Route::get('/galeri', [PageController::class, 'galeri'])->name('galeri');
 Route::get('/berita/{slug}', [PageController::class, 'detail_berita'])->name('detail_berita');
 Route::get('/agenda/{slug}', [PageController::class, 'detail_agenda'])->name('detail_agenda');
 Route::get('/livestream', [PageController::class, 'livestream'])->name('livestream');
+Route::get('/presensi/{slug}', [PageController::class, 'presensiAgenda'])->name('presensi');
+Route::post('/presensi/{slug}', [PageController::class, 'presensiAgendaPost'])->name('presensi.post');
 
 
 Route::prefix('auth')->group(function () {
@@ -36,6 +38,7 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::post('/agenda', [AgendaController::class, 'agendaPost'])->name('dashboard.agenda.post');
     Route::put('/agenda/{id}', [AgendaController::class, 'agendaPut'])->name('dashboard.agenda.put');
     Route::delete('/agenda/{id}', [AgendaController::class, 'agendaDelete'])->name('dashboard.agenda.delete');
+    Route::get('/agenda/qr-code/{id}', [AgendaController::class, 'qrCodeAgenda'])->name('dashboard.agenda.qr_code');
 
     Route::get('/berita', [BeritaController::class, 'berita'])->name('dashboard.berita');
     Route::post('/berita', [BeritaController::class, 'beritaPost'])->name('dashboard.berita.post');

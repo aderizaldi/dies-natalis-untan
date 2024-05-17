@@ -27,7 +27,7 @@
                                     <th data-searchable="false" data-sortable="false">Gambar</th>
                                     <th>Judul</th>
                                     <th>Deskripsi Singkat</th>
-                                    <th data-searchable="false" data-sortable="false" data-width="120">Aksi</th>
+                                    <th data-searchable="false" data-sortable="false" data-width="180">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,8 +42,11 @@
                                         </td>
                                         <td>{{ $agenda->judul }}</td>
                                         <td>{{ $agenda->deskripsi_singkat }}</td>
-                                        {{-- action edit and delete button --}}
                                         <td>
+                                            <button type="button" class="btn btn-primary btn-sm mb-1"
+                                                data-bs-toggle="modal" data-bs-target="#qrcode-{{ $agenda->id }}"><span
+                                                    class="bi bi-qr-code"></span>
+                                            </button>
                                             <button type="button" class="btn btn-warning btn-sm mb-1"
                                                 data-bs-toggle="modal" data-bs-target="#edit-{{ $agenda->id }}"><span
                                                     class="bi bi-pencil-square"></span></button>
@@ -191,6 +194,33 @@
                             <button type="submit" class="btn btn-danger">Hapus</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="qrcode-{{ $agenda->id }}" tabindex="-1" aria-labelledby="qrcodeLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="qrcodeLabel">QR Code Agenda</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img src="{{ route('dashboard.agenda.qr_code', $agenda->id) }}" alt="QR Code Agenda"
+                                class="img-fluid" loading="lazy">
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="{{ route('presensi', $agenda->slug) }}"
+                                target="_blank">{{ route('presensi', $agenda->slug) }}</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="{{ route('dashboard.agenda.qr_code', $agenda->id) }}" target="_blank"
+                            download="{{ $agenda->slug }}.png" class="btn btn-primary">Download</a>
+                    </div>
                 </div>
             </div>
         </div>

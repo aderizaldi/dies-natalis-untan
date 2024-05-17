@@ -76,4 +76,20 @@ class AgendaController extends Controller
 
         return redirect()->back()->with('success', 'Berhasil menghapus agenda');
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Form Agenda
+    |--------------------------------------------------------------------------
+    */
+
+    public function qrCodeAgenda($id)
+    {
+        $agenda = Agenda::findOrfail($id);
+        $url_image = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" . route('presensi', $agenda->slug);
+
+        //return download image from url_image
+        $base64_image = base64_encode(file_get_contents($url_image));
+        return response(base64_decode($base64_image))->header('Content-Type', 'image/png');
+    }
 }

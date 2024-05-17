@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\StatusPesertaEnum;
 use App\Models\Logo;
 use App\Models\Agenda;
 use App\Models\Berita;
+use App\Models\FormAgenda;
 use App\Models\Galeri;
 use App\Models\Sambutan;
 use App\Models\GaleriVideo;
@@ -79,5 +81,46 @@ class PageController extends Controller
     {
         $video_livestream = Setting::where('key', 'VIDEO_LIVESTREAM')->first();
         return view('landing.pages.livestream', compact('video_livestream'));
+    }
+
+    public function presensiAgenda($slug)
+    {
+        $agenda = Agenda::where('slug', $slug)->first();
+        if (!$agenda) return abort(404);
+
+        return view('landing.pages.presensi_agenda', compact('agenda'));
+    }
+
+    public function presensiAgendaPost(Request $request, $slug)
+    {
+        $agenda = Agenda::where('slug', $slug)->first();
+        if (!$agenda) return abort(404);
+
+        $request->validate([
+            'status_peserta' => 'required|in:' . implode(',', StatusPesertaEnum::getValues()),
+            'nama' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|in:L,P',
+            'umur' => 'required|integer',
+            'no_hp' => 'required|string|max:15',
+            'alamat' => 'nullable|string',
+            'saran' => 'nullable|string',
+        ]);
+
+        $form_agenda = new FormAgenda();
+        $nomor_peserta = $form_agenda->makeNumber($agenda->id);
+        if (!$nomor_peserta) return redirect()->back()->with('error', 'Gagal membuat nomor peserta');
+        $form_agenda->create([
+            'agenda_id' => $agenda->id,
+            'nomor_peserta' => $nomor_peserta,
+            'status_peserta' => $request->status_peserta,
+            'nama' => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'umur' => $request->umur,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'saran' => $request->saran,
+        ]);
+
+        return redirect()->back()->with('success', 'Berhasil melakukan presensi');
     }
 }
