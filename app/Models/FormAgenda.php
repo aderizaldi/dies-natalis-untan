@@ -31,6 +31,6 @@ class FormAgenda extends Model
             $right = str_pad($number, 4, '0', STR_PAD_LEFT);
             return $left . '-' . $right;
         }
-        return $left . - '0001';
+        return $left . '-' . '0001';
     }
 }
