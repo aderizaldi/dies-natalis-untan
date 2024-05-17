@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Galeri;
 use App\Models\GaleriVideo;
 use Illuminate\Http\Request;
+use App\Enums\JenisGaleriEnum;
 use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
@@ -20,11 +21,13 @@ class GaleriController extends Controller
         $request->validate([
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'judul' => 'required|string',
+            'jenis' => 'required|in:' . implode(',', JenisGaleriEnum::getValues()),
         ]);
 
         $gambar = new Galeri();
         $gambar->judul = $request->judul;
         $gambar->gambar = $request->file('gambar')->store('gambar', 'public');
+        $gambar->jenis = $request->jenis;
         $gambar->save();
 
         return redirect()->back()->with('success', 'Gambar berhasil ditambahkan', compact('gambar'));
@@ -34,10 +37,12 @@ class GaleriController extends Controller
     {
         $request->validate([
             'judul' => 'required|string',
+            'jenis' => 'required|in:' . implode(',', JenisGaleriEnum::getValues()),
         ]);
 
         $gambar = Galeri::findOrFail($id);
         $gambar->judul = $request->judul;
+        $gambar->jenis = $request->jenis;
 
         if ($request->hasFile('gambar')) {
             $request->validate([

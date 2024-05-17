@@ -12,11 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('galeris', function (Blueprint $table) {
-            $table->id();
-            $table->string('gambar');
-            $table->string('judul');
-            $table->timestamps();
+        Schema::table('galeris', function (Blueprint $table) {
+            $table->enum('jenis', JenisGaleriEnum::getValues())->default(JenisGaleriEnum::KEGIATAN);
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('galeris');
+        Schema::table('galeris', function (Blueprint $table) {
+            $table->dropColumn('jenis');
+        });
     }
 };

@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.main')
+@use('App\Enums\JenisGaleriEnum')
 @section('content')
     <header class="mb-3">
         <a href="#" class="burger-btn d-block d-xl-none">
@@ -25,6 +26,7 @@
                                     <th data-searchable="false" data-sortable="false">No</th>
                                     <th data-searchable="false" data-sortable="false">Gambar</th>
                                     <th>Judul</th>
+                                    <th>Jenis</th>
                                     <th data-searchable="false" data-sortable="false" data-width="120">Aksi</th>
                                 </tr>
                             </thead>
@@ -38,6 +40,7 @@
                                                 loading="lazy">
                                         </td>
                                         <td>{{ $gambar->judul }}</td>
+                                        <td>{{ $gambar->jenis }}</td>
                                         {{-- action edit and delete button --}}
                                         <td>
                                             <button type="button" class="btn btn-warning btn-sm mb-1"
@@ -77,6 +80,14 @@
                             <label for="judul" class="form-label">Judul</label>
                             <input type="text" class="form-control" id="judul" name="judul" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="jenis" class="form-label">Jenis</label>
+                            <select class="form-select" id="jenis" name="jenis" required>
+                                @foreach (JenisGaleriEnum::getValues() as $jenis)
+                                    <option value="{{ $jenis }}">{{ $jenis }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -89,7 +100,8 @@
 
     {{-- modal edit & delete --}}
     @foreach ($gambars as $gambar)
-        <div class="modal fade" id="edit-{{ $gambar->id }}" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
+        <div class="modal fade" id="edit-{{ $gambar->id }}" tabindex="-1" aria-labelledby="editLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -110,6 +122,15 @@
                                 <label for="judul" class="form-label">Judul</label>
                                 <input type="text" class="form-control" id="judul" name="judul"
                                     value="{{ $gambar->judul }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="jenis" class="form-label">Jenis</label>
+                                <select class="form-select" id="jenis" name="jenis" required>
+                                    @foreach (JenisGaleriEnum::getValues() as $jenis)
+                                        <option value="{{ $jenis }}" @selected($jenis == $gambar->jenis)>
+                                            {{ $jenis }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
