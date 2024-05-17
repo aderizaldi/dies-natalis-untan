@@ -30,7 +30,7 @@
                                                                 <li class="img-wraping"><a
                                                                         href="{{ $agenda->redirect ?? route('detail_agenda', $agenda->slug) }}"><img
                                                                             src="{{ filter_var($agenda->gambar, FILTER_VALIDATE_URL) ? $agenda->gambar : asset('storage/' . $agenda->gambar) }}"
-                                                                            class="img-responsive" alt="user-image" /></a>
+                                                                            class="img-responsive" alt="Agenda Image" /></a>
                                                                 </li>
                                                             </div>
                                                             <div class="righting-wrap">
@@ -69,7 +69,7 @@
                                                                 <li class="img-wraping"><a
                                                                         href="{{ $agenda->redirect ?? route('detail_agenda', $agenda->slug) }}"><img
                                                                             src="{{ filter_var($agenda->gambar, FILTER_VALIDATE_URL) ? $agenda->gambar : asset('storage/' . $agenda->gambar) }}"
-                                                                            class="img-responsive" alt="user-image" /></a>
+                                                                            class="img-responsive" alt="Agenda Image" /></a>
                                                                 </li>
                                                             </div>
                                                             <div class="righting-wrap">

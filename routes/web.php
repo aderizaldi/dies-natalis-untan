@@ -68,4 +68,9 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::put('/video-testimoni', [SettingController::class, 'videoTestimoniPut'])->name('dashboard.video_testimoni.put');
     Route::get('/video-livestream', [SettingController::class, 'videoLivestream'])->name('dashboard.video_livestream');
     Route::put('/video-livestream', [SettingController::class, 'videoLivestreamPut'])->name('dashboard.video_livestream.put');
+
+    Route::get('/partner-logo', [SettingController::class, 'partnerLogo'])->name('dashboard.partner_logo');
+    Route::post('/partner-logo', [SettingController::class, 'partnerLogoPost'])->name('dashboard.partner_logo.post');
+    Route::put('/partner-logo/{id}', [SettingController::class, 'partnerLogoPut'])->name('dashboard.partner_logo.put');
+    Route::delete('/partner-logo/{id}', [SettingController::class, 'partnerLogoDelete'])->name('dashboard.partner_logo.delete');
 });

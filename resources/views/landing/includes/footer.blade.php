@@ -19,16 +19,14 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-12 footer-links">
-                    <h4>Partner dan sponsor</h4>
                     <div class="d-flex justify-content-between flex-wrap gap-3 align-items-center">
-                        <img src="{{ asset('assets/img/kemendikbud.png') }}" alt="Kemendikbud"
-                            style="width: 100px; height:100%">
-                        <img src="{{ asset('assets/img/kampus-merdeka.png') }}" alt="Kampus Merdeka"
-                            style="width: 100px; height:100%">
-                        <img src="{{ asset('assets/img/untan.png') }}" alt="Universitas Tanjungpura"
-                            style="width: 100px; height:100%">
-                        <img src="{{ asset('assets/img/logo.png') }}" alt="Dies Natalis Untan"
-                            style="width: 100px; height:100%">
+                        @foreach ($partner_logos as $logo)
+                            <a href="{{ $logo->url ?? '#' }}" target="_blank">
+                                <img src="{{ filter_var($logo->logo, FILTER_VALIDATE_URL) ? $logo->logo : asset('storage/' . $logo->logo) }}"
+                                    alt="{{ $logo->nama }}" class="img-fluid" style="max-width: 100px;"
+                                    loading="lazy">
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
