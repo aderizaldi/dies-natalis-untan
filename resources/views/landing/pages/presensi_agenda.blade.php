@@ -15,12 +15,22 @@
                     <div class="col-lg-12">
                         <div class="card border-0 p-2">
                             <div class="card-body">
-                                @if (cache()->has('registered') && cache('registered')['agenda_id'] == $agenda->id)
+                                @if (session('success') && session('agenda')['agenda_id'] == $agenda->id)
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <strong>Terima kasih {{ cache('registered')['nama'] }}</strong> Anda telah
+                                        <strong>Terima kasih {{ session('agenda')['nama'] }}</strong> Anda telah
                                         terdaftar sebagai peserta acara ini. Nomor peserta anda adalah
-                                        <strong>{{ cache('registered')['nomor_peserta'] }}</strong>.
+                                        <strong>{{ session('agenda')['nomor_peserta'] }}</strong>. <strong>Screenshot
+                                            halaman ini
+                                            untuk simpan nomor peserta anda sebagai nomor undian doorprize</strong>
                                     </div>
+                                    <script>
+                                        localStorage.setItem('registered', {
+                                            nama: "{{ session('agenda')['nama'] }}"
+                                            ",
+                                            nomor_peserta: "{{ session('agenda')['nomor_peserta'] }}",
+                                            agenda_id: "{{ session('agenda')['agenda_id'] }}"
+                                        });
+                                    </script>
                                 @else
                                     <div class="row mb-3">
                                         <form action="{{ route('presensi.post', $agenda->slug) }}" method="POST">

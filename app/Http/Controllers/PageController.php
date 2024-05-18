@@ -126,18 +126,11 @@ class PageController extends Controller
             'saran' => $request->saran,
         ]);
 
-        Cache::put('registered', [
+        return redirect()->back()->with('success', 'Berhasil melakukan presensi')->with('agenda', [
+            'success', 'Berhasil melakukan presensi',
             'agenda_id' => $agenda->id,
             'nomor_peserta' => $nomor_peserta,
-            'status_peserta' => $request->status_peserta,
             'nama' => $request->nama,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'umur' => $request->umur,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            'saran' => $request->saran,
-        ], 60 * 60 * 24 * 30 * 12 * 5);
-
-        return redirect()->back()->with('success', 'Berhasil melakukan presensi');
+        ]);
     }
 }
