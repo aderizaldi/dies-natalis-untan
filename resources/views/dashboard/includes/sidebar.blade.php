@@ -126,6 +126,15 @@
                     </a>
                 </li>
 
+                @role('SUPERADMIN')
+                    <li class="sidebar-title">Superadmin</li>
+                    <li class="sidebar-item {{ request()->is('admin/dashboard/user*') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.user') }}" class='sidebar-link'>
+                            <i class="bi bi-people"></i>
+                            <span>User</span>
+                        </a>
+                    </li>
+                @endrole
                 <li class="sidebar-title">Pengaturan</li>
                 <li class="sidebar-item {{ request()->is('admin/dashboard/profil*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard.profil') }}" class='sidebar-link'>

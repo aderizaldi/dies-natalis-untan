@@ -79,4 +79,9 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::post('/partner-logo', [SettingController::class, 'partnerLogoPost'])->name('dashboard.partner_logo.post');
     Route::put('/partner-logo/{id}', [SettingController::class, 'partnerLogoPut'])->name('dashboard.partner_logo.put');
     Route::delete('/partner-logo/{id}', [SettingController::class, 'partnerLogoDelete'])->name('dashboard.partner_logo.delete');
+
+    Route::get('/user', [UserController::class, 'user'])->name('dashboard.user');
+    Route::post('/user', [UserController::class, 'userPost'])->name('dashboard.user.post');
+    Route::put('/user/{id}', [UserController::class, 'userPut'])->name('dashboard.user.put');
+    Route::delete('/user/{id}', [UserController::class, 'userDelete'])->name('dashboard.user.delete');
 });
