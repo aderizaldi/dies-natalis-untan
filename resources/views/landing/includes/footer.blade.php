@@ -11,10 +11,12 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Kontak</h4>
                     <ul>
-                        <li><i class="bi bi-telephone me-1"></i> <a href="tel:+62561700000">+62 561 700000</a></li>
-                        <li><i class="bi bi-telephone me-1"></i> <a href="tel:+62561700000">+62 561 700000</a></li>
-                        <li><i class="bi bi-envelope me-1"></i> <a
-                                href="mailto:untan_59@untan.ac.id">untan_59@untan.ac.id</a></li>
+                        <li><i class="bi bi-telephone me-1"></i> <a href="tel:0561739630" target="_blank">(0561) 739630</a>
+                        </li>
+                        <li><i class="bi bi-envelope me-1"></i> <a href="mailto:untan_59@untan.ac.id"
+                                target="_blank">untan_59@untan.ac.id</a></li>
+                        <li><i class="bi bi-link-45deg me=2"></i> <a href="http://www.untan.ac.id"
+                                target="_blank">http://www.untan.ac.id</a></li>
 
                     </ul>
                 </div>
