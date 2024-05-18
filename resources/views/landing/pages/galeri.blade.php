@@ -21,11 +21,13 @@
                                 </a>
                             </div>
                         @endforeach
-                        <div class="col-12 w-full d-flex justify-content-center">
-                            {{ $gambar_ucapan_selamat->appends(['ucapan-selamat' => $gambar_ucapan_selamat->currentPage()])->links() }}
-                        </div>
                     </div>
                 </div>
+                <class div="row">
+                    <div class="col-12 w-full d-flex justify-content-center">
+                        {{ $gambar_ucapan_selamat->appends(['ucapan-selamat' => $gambar_ucapan_selamat->currentPage()])->links() }}
+                    </div>
+                </class>
 
                 <hr class="mt-5">
                 </hr>
@@ -42,9 +44,11 @@
                                 </a>
                             </div>
                         @endforeach
-                        <div class="col-12 w-full d-flex justify-content-center">
-                            {{ $gambar_kegiatan->appends(['kegiatan' => $gambar_kegiatan->currentPage()])->links() }}
-                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 w-full d-flex justify-content-center">
+                        {{ $gambar_kegiatan->appends(['kegiatan' => $gambar_kegiatan->currentPage()])->links() }}
                     </div>
                 </div>
 
