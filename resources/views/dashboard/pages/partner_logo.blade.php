@@ -119,9 +119,9 @@
                                     value="{{ $logo->nama }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="url" class="form-label">Url</label>
-                                <input type="text" class="form-control" id="url" name="url"
-                                    value="{{ $logo->url }}">
+                                <label for="link" class="form-label">Url</label>
+                                <input type="text" class="form-control" id="link" name="link"
+                                    value="{{ $logo->link }}">
                                 <span class="text-muted text-sm"></span>Masukkan url website partner jika ada</span>
                             </div>
                         </div>

@@ -21,7 +21,7 @@
                 <div class="col-lg-6 col-md-12 footer-links">
                     <div class="d-flex justify-content-between flex-wrap gap-3 align-items-center">
                         @foreach ($partner_logos as $logo)
-                            <a href="{{ $logo->url ?? '#' }}" target="_blank">
+                            <a href="{{ $logo->link ?? '#' }}" target="_blank">
                                 <img src="{{ filter_var($logo->logo, FILTER_VALIDATE_URL) ? $logo->logo : asset('storage/' . $logo->logo) }}"
                                     alt="{{ $logo->nama }}" class="img-fluid" style="max-width: 100px;"
                                     loading="lazy">
