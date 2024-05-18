@@ -55,7 +55,7 @@
                                             <div class="col-12 form-group mt-3">
                                                 <label for="nama">Nama Lengkap:</label>
                                                 <input type="text" class="form-control" id="nama" name="nama"
-                                                    required>
+                                                    value="{{ old('nama') }}">
                                             </div>
                                             <div class="col-12 form-group mt-3">
                                                 <label for="status">Status:</label>
@@ -65,7 +65,7 @@
                                                         <div class="form-check pe-5">
                                                             <input class="form-check-input" type="radio"
                                                                 name="status_peserta" id="{{ $status }}"
-                                                                value="{{ $status }}">
+                                                                value="{{ $status }}" @checked(old('status_peserta') == $status)>
                                                             <label class="form-check-label"
                                                                 for="{{ $status }}">{{ $status }}</label>
                                                         </div>
@@ -80,7 +80,7 @@
                                                         <div class="form-check pe-5">
                                                             <input class="form-check-input" type="radio"
                                                                 id="{{ $jenis_kelamin }}" name="jenis_kelamin"
-                                                                value="{{ $jenis_kelamin }}">
+                                                                value="{{ $jenis_kelamin }}" @checked(old('jenis_kelamin') == $jenis_kelamin)>
                                                             <label class="form-check-label"
                                                                 for="{{ $jenis_kelamin }}">{{ $jenis_kelamin }}</label>
                                                         </div>
@@ -91,22 +91,23 @@
                                                 <label for="umur">Umur:</label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control" id="umur" name="umur"
-                                                        aria-describedby="tahun" required min="0" max="200">
+                                                        aria-describedby="tahun" min="0" max="200"
+                                                        value="{{ old('umur') }}">
                                                     <span class="input-group-text" id="tahun">Tahun</span>
                                                 </div>
                                             </div>
                                             <div class="col-12 form-group mt-3">
                                                 <label for="no_hp">Nomor HP/Whatsapp:</label>
                                                 <input type="text" class="form-control" id="no_hp" name="no_hp"
-                                                    required>
+                                                    value="{{ old('no_hp') }}">
                                             </div>
                                             <div class="col-12 form-group mt-3">
                                                 <label for="alamat">Alamat:</label>
-                                                <textarea class="form-control" id="alamat" name="alamat" required rows="4"></textarea>
+                                                <textarea class="form-control" id="alamat" name="alamat" rows="4">{{ old('alamat') }}</textarea>
                                             </div>
                                             <div class="col-12 form-group mt-3">
                                                 <label for="saran">Saran:</label>
-                                                <textarea class="form-control" id="saran" name="saran" required rows="4"></textarea>
+                                                <textarea class="form-control" id="saran" name="saran" rows="4">{{ old('saran') }}</textarea>
                                             </div>
                                             <div class="col-12 d-flex justify-content-end mt-3">
                                                 <button type="submit" class="btn btn-primary"><span
@@ -123,3 +124,42 @@
         </section>
     </main>
 @endsection
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets-admin/extensions/sweetalert2/sweetalert2.min.css') }}">
+@endpush
+@push('js-extensions')
+    <script src="{{ asset('assets-admin/extensions/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/extensions/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        @if (session('errors'))
+            Toast.fire({
+                icon: 'error',
+                title: '{{ session('errors')->first() }}'
+            });
+        @endif
+        @if (session('error'))
+            Toast.fire({
+                icon: 'error',
+                title: '{{ session('error') }}'
+            });
+        @endif
+        @if (session('success'))
+            Toast.fire({
+                icon: 'success',
+                title: '{{ session('success') }}'
+            });
+        @endif
+    </script>
+@endpush
