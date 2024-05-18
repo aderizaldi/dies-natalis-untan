@@ -6,11 +6,13 @@ use App\Models\FormAgenda;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithMapping;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-class FormAgendasExport implements FromQuery, WithHeadings, ShouldAutoSize, WithMapping
+class FormAgendasExport implements FromQuery, WithHeadings, ShouldAutoSize, WithMapping, WithColumnFormatting
 {
     use Exportable;
 
@@ -53,6 +55,13 @@ class FormAgendasExport implements FromQuery, WithHeadings, ShouldAutoSize, With
             'Alamat',
             'Saran',
             'Waktu Presensi',
+        ];
+    }
+
+    public function columnFormats(): array
+    {
+        return [
+            'I' => NumberFormat::FORMAT_DATE_DATETIME,
         ];
     }
 }
