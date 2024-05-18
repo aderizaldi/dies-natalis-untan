@@ -88,7 +88,7 @@ class AgendaController extends Controller
     public function exportPresensiAgenda($id)
     {
         $agenda = Agenda::findOrFail($id);
-        return (new FormAgendasExport($agenda->id))->download('presensi' . $agenda->slug . '.xlsx');
+        return (new FormAgendasExport($agenda->id))->download('presensi-' . $agenda->slug . '.xlsx');
     }
 
     /*

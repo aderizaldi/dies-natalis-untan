@@ -6,8 +6,10 @@ use App\Models\FormAgenda;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class FormAgendasExport implements FromQuery
+class FormAgendasExport implements FromQuery, WithHeadings, ShouldAutoSize
 {
     use Exportable;
 
@@ -46,7 +48,7 @@ class FormAgendasExport implements FromQuery
             'Nama',
             'Jenis Kelamin',
             'Umur',
-            'No HP',
+            'No HP/Whatsapp',
             'Alamat',
             'Saran',
             'Waktu Presensi',
