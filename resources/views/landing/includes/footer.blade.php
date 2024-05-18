@@ -5,7 +5,7 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h3>Universitas Tanjungpura</h3>
                     <p>
-                        Jl. Prof.Dr.H.Hadari Nawawi / Jendral Ahmad Yani, Pontianak, Kalimantan Barat, 78124
+                        Jalan Prof. Dr. H. Hadari Nawawi Pontianak 78124
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6 footer-links">
