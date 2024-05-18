@@ -8,8 +8,9 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class FormAgendasExport implements FromQuery, WithHeadings, ShouldAutoSize
+class FormAgendasExport implements FromQuery, WithHeadings, ShouldAutoSize, WithMapping
 {
     use Exportable;
 
