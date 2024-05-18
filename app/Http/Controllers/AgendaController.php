@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agenda;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Exports\FormAgendasExport;
 use Illuminate\Support\Facades\Storage;
 
 class AgendaController extends Controller
@@ -82,6 +83,12 @@ class AgendaController extends Controller
         $agenda = Agenda::findOrFail($id);
         $form_agendas = $agenda->formAgendas;
         return view('dashboard.pages.form_agenda', compact('agenda', 'form_agendas'));
+    }
+
+    public function exportPresensiAgenda($id)
+    {
+        $agenda = Agenda::findOrFail($id);
+        return (new FormAgendasExport($agenda->id))->download('presensi' . $agenda->slug . '.xlsx');
     }
 
     /*

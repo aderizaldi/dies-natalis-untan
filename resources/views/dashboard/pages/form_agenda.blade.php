@@ -13,6 +13,12 @@
             <div class="col-12">
                 {{-- card datatable --}}
                 <div class="card">
+                    @if ($form_agendas->count() > 0)
+                        <div class="card-header d-flex justify-content-start">
+                            <a href="{{ route('dashboard.agenda.presensi.export', $agenda->id) }}" class="btn btn-secondary"
+                                target="_blank">Export Excel<i class="bi bi-file-earmark-excel ms-1"></i></a>
+                        </div>
+                    @endif
                     <div class="card-body">
                         <table class="dataTables-basic table table-responsive">
                             <thead>

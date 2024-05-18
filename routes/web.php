@@ -39,6 +39,7 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::put('/agenda/{id}', [AgendaController::class, 'agendaPut'])->name('dashboard.agenda.put');
     Route::delete('/agenda/{id}', [AgendaController::class, 'agendaDelete'])->name('dashboard.agenda.delete');
     Route::get('/agenda/presensi/{id}', [AgendaController::class, 'presensiAgenda'])->name('dashboard.agenda.presensi');
+    Route::get('/agenda/presensi/{id}/export', [AgendaController::class, 'exportPresensiAgenda'])->name('dashboard.agenda.presensi.export');
     Route::get('/agenda/qr-code/{id}', [AgendaController::class, 'qrCodeAgenda'])->name('dashboard.agenda.qr_code');
     Route::get('/agenda/big-qr-code/{id}', [AgendaController::class, 'bigQrCodeAgenda'])->name('dashboard.agenda.big_qr_code');
 
