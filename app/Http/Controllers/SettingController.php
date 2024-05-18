@@ -17,8 +17,9 @@ class SettingController extends Controller
 
     public function gambarHeaderPut(Request $request)
     {
+        // max 20MB
         $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:20000',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:20480',
         ]);
 
         $gambar = Setting::where('key', "GAMBAR_HEADER")->first();

@@ -221,7 +221,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <a href="{{ route('dashboard.agenda.qr_code', $agenda->id) }}" target="_blank"
+                        <a href="{{ route('dashboard.agenda.big_qr_code', $agenda->id) }}" target="_blank"
                             download="{{ $agenda->slug }}.png" class="btn btn-primary">Download</a>
                     </div>
                 </div>

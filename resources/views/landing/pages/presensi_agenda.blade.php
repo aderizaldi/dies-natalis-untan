@@ -1,6 +1,24 @@
 @extends('landing.layouts.main')
 @use('App\Enums\StatusPesertaEnum')
 @use('App\Enums\JenisKelaminEnum')
+@push('scripts')
+    <script>
+        var agenda = @json($agenda);
+        var registered = localStorage.getItem('registered');
+        if (registered && agenda.id == JSON.parse(registered).agenda_id) {
+            var nama = JSON.parse(registered).nama;
+            var nomor_peserta = JSON.parse(registered).nomor_peserta;
+            console.log(nama);
+            var content = document.getElementById('presensi-content');
+            content.innerHTML = `
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Terima kasih ${nama}</strong> Anda telah terdaftar sebagai peserta acara ini. Nomor peserta anda adalah <strong>${nomor_peserta}</strong>.
+                <br><br><strong>Screenshot halaman ini untuk simpan nomor peserta anda sebagai nomor undian doorprize</strong>
+            </div>
+        `;
+        }
+    </script>
+@endpush
 @section('content')
     <main id="main">
         <section id="main-section" class="main-section section-bg">
@@ -14,22 +32,20 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card border-0 p-2">
-                            <div class="card-body">
+                            <div class="card-body" id="presensi-content">
                                 @if (session('success') && session('agenda')['agenda_id'] == $agenda->id)
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <strong>Terima kasih {{ session('agenda')['nama'] }}</strong> Anda telah
                                         terdaftar sebagai peserta acara ini. Nomor peserta anda adalah
-                                        <strong>{{ session('agenda')['nomor_peserta'] }}</strong>. <strong>Screenshot
+                                        <strong>{{ session('agenda')['nomor_peserta'] }}</strong>.
+                                        <br><br><strong>Screenshot
                                             halaman ini
                                             untuk simpan nomor peserta anda sebagai nomor undian doorprize</strong>
                                     </div>
                                     <script>
-                                        localStorage.setItem('registered', {
-                                            nama: "{{ session('agenda')['nama'] }}"
-                                            ",
-                                            nomor_peserta: "{{ session('agenda')['nomor_peserta'] }}",
-                                            agenda_id: "{{ session('agenda')['agenda_id'] }}"
-                                        });
+                                        var registered = @json(session('agenda'));
+                                        console.log(registered);
+                                        localStorage.setItem('registered', JSON.stringify(registered));
                                     </script>
                                 @else
                                     <div class="row mb-3">
@@ -75,7 +91,7 @@
                                                 <label for="umur">Umur:</label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control" id="umur" name="umur"
-                                                        aria-describedby="tahun" required>
+                                                        aria-describedby="tahun" required min="0" max="200">
                                                     <span class="input-group-text" id="tahun">Tahun</span>
                                                 </div>
                                             </div>
