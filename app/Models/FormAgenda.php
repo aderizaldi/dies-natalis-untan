@@ -23,14 +23,19 @@ class FormAgenda extends Model
         return null;
     }
 
-    public function makeNumber($agenda_id)
+    public function makeNumber($agenda_id, $counter = 0)
     {
         $left = str_pad($agenda_id, 3, '0', STR_PAD_LEFT);
         $number = $this->getNewNumber($agenda_id);
+        $right = '0001';
         if ($number) {
-            $right = str_pad($number, 4, '0', STR_PAD_LEFT);
-            return $left . '-' . $right;
+            $right = str_pad($number + $counter, 4, '0', STR_PAD_LEFT);
         }
-        return $left . '-' . '0001';
+        $is_exist = $this->where('nomor_peserta', $left . '-' . $right)->first();
+        if ($is_exist) {
+            return $this->makeNumber($agenda_id, $counter + 1);
+        }
+
+        return $left . '-' . $right;
     }
 }
