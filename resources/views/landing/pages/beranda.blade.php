@@ -115,7 +115,12 @@
                         @endforeach
                     </div>
                 </div>
-
+                <div class="w-full">
+                    {{-- tombol selengkapnya --}}
+                    <div class="text-center mt-4">
+                        <a href="{{ route('agenda') }}" class="btn btn-primary">Selengkapnya</a>
+                    </div>
+                </div>
             </div>
         </section>
 
