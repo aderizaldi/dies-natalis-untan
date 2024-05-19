@@ -78,8 +78,9 @@ class PageController extends Controller
     {
         $agenda = Agenda::where('slug', $slug)->first();
         if (!$agenda) return abort(404);
+        $status_peserta = $agenda->formAgendas()->distinct('status_peserta')->pluck('status_peserta');
 
-        return view('landing.pages.detail_agenda', compact('agenda'));
+        return view('landing.pages.detail_agenda', compact('agenda', 'status_peserta'));
     }
 
     public function livestream()

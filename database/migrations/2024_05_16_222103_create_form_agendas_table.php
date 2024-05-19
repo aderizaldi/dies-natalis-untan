@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('agenda_id')->constrained('agendas')->cascadeOnDelete();
             $table->string('nomor_peserta')->unique();
-            $table->enum('status_peserta', StatusPesertaEnum::getValues());
+            $table->string('status_peserta');
             $table->string('nama');
             $table->enum('jenis_kelamin', JenisKelaminEnum::getValues());
             $table->integer('umur');

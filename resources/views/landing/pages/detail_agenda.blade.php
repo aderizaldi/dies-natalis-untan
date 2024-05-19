@@ -1,5 +1,4 @@
 @extends('landing.layouts.main')
-@use('App\Enums\StatusPesertaEnum')
 @section('content')
     <main id="main">
         <section id="main-section" class="main-section section-bg">
@@ -22,22 +21,12 @@
                         <div class="col-lg-12">
                             <div class="d-flex justify-content-start py-3">
                                 <p class="p-0 m-0 me-3">Kehadiran Peserta: </p>
-                                @if ($agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::MAHASISWA)->count() > 0)
-                                    <span
-                                        class="badge bg-primary me-3">{{ $agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::MAHASISWA)->count() .' ' .StatusPesertaEnum::MAHASISWA }}</span>
-                                @endif
-                                @if ($agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::CIVITAS)->count() > 0)
-                                    <span
-                                        class="badge bg-primary me-3">{{ $agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::CIVITAS)->count() .' ' .StatusPesertaEnum::CIVITAS }}</span>
-                                @endif
-                                @if ($agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::UMUM)->count() > 0)
-                                    <span
-                                        class="badge bg-primary me-3">{{ $agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::UMUM)->count() .' ' .StatusPesertaEnum::UMUM }}</span>
-                                @endif
-                                @if ($agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::ALUMNI)->count() > 0)
-                                    <span
-                                        class="badge bg-primary me-3">{{ $agenda->formAgendas()->where('status_peserta', StatusPesertaEnum::ALUMNI)->count() .' ' .StatusPesertaEnum::ALUMNI }}</span>
-                                @endif
+                                @foreach ($status_peserta as $status)
+                                    @if ($agenda->formAgendas()->where('status_peserta', $status)->count() > 0)
+                                        <span
+                                            class="badge bg-primary me-3">{{ $agenda->formAgendas()->where('status_peserta', $status)->count() . ' ' . $status }}</span>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     @endif
