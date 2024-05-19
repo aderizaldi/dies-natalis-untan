@@ -11,9 +11,8 @@
             console.log(nama);
             var content = document.getElementById('presensi-content');
             content.innerHTML = `
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                 <strong>Terima kasih ${nama}</strong> Anda telah terdaftar sebagai peserta acara ini. Nomor peserta anda adalah <strong>${nomor_peserta}</strong>.
-                <br><br><strong>Screenshot halaman ini untuk simpan nomor peserta anda sebagai nomor undian doorprize</strong>
             </div>
         `;
         }
@@ -34,13 +33,10 @@
                         <div class="card border-0 p-2">
                             <div class="card-body" id="presensi-content">
                                 @if (session('success') && session('agenda')['agenda_id'] == $agenda->id)
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                                         <strong>Terima kasih {{ session('agenda')['nama'] }}</strong> Anda telah
                                         terdaftar sebagai peserta acara ini. Nomor peserta anda adalah
                                         <strong>{{ session('agenda')['nomor_peserta'] }}</strong>.
-                                        <br><br><strong>Screenshot
-                                            halaman ini
-                                            untuk simpan nomor peserta anda sebagai nomor undian doorprize</strong>
                                     </div>
                                     <script>
                                         var registered = @json(session('agenda'));
