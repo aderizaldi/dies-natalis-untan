@@ -10,8 +10,8 @@ final class StatusPesertaEnum extends Enum
 {
     const PIMPINAN = "Jajaran Pimpinan Universitas/Fakultas/Lembaga/Unit Kerja";
     const CIVITAS = "Civitas Akademika Untan";
-    const KEPALA_DAERAH = "Kepala Daerah/Legislatig/OPD";
-    const MITRA = "Mitra Kerja Sama";
+    const KEPALA_DAERAH = "Kepala Daerah/Legislatif/OPD";
+    const MITRA = "Mitra Kerjasama";
     const MAHASISWA = "Mahasiswa";
     const ALUMNI = "Alumni";
     const MASYARAKAT = "Masyarakat";
