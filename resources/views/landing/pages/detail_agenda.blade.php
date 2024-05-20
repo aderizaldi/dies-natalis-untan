@@ -21,11 +21,11 @@
                         <div class="col-lg-12">
                             <div class="d-flex flex-wrap justify-content-start">
                                 <p class="p-0 m-0 me-2">Kehadiran Peserta: </p>
-                                <div class="d-flex flex-wrap justify-content-start p-2">
+                                <div class="d-flex flex-wrap justify-content-start">
                                     @foreach ($status_peserta as $status)
                                         @if ($agenda->formAgendas()->where('status_peserta', $status)->count() > 0)
                                             <span
-                                                class="badge bg-primary me-3">{{ $agenda->formAgendas()->where('status_peserta', $status)->count() . ' ' . $status }}</span>
+                                                class="badge bg-primary me-2 mb-2">{{ $agenda->formAgendas()->where('status_peserta', $status)->count() . ' ' . $status }}</span>
                                         @endif
                                     @endforeach
                                 </div>
