@@ -20,15 +20,13 @@
                     @if ($agenda->formAgendas->count() > 0)
                         <div class="col-lg-12">
                             <div class="d-flex flex-wrap justify-content-start">
-                                <p class="p-0 m-0 me-2">Kehadiran Peserta: </p>
-                                <div class="d-flex flex-wrap justify-content-start">
-                                    @foreach ($status_peserta as $status)
-                                        @if ($agenda->formAgendas()->where('status_peserta', $status)->count() > 0)
-                                            <span
-                                                class="badge bg-primary me-2 mb-2">{{ $agenda->formAgendas()->where('status_peserta', $status)->count() . ' ' . $status }}</span>
-                                        @endif
-                                    @endforeach
-                                </div>
+                                <p class="p-0 m-0 me-1 mb-1">Kehadiran Peserta: </p>
+                                @foreach ($status_peserta as $status)
+                                    @if ($agenda->formAgendas()->where('status_peserta', $status)->count() > 0)
+                                        <span
+                                            class="badge bg-primary me-1 mb-1">{{ $agenda->formAgendas()->where('status_peserta', $status)->count() . ' ' . $status }}</span>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     @endif
