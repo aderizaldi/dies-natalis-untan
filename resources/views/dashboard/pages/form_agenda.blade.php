@@ -30,6 +30,9 @@
                                 {{-- button nonaktifkan sertifikat --}}
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#nonaktifkanSertifikatModal">Nonaktifkan Sertifikat</button>
+                                {{-- button update sertifikat --}}
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#updateSertifikatModal">Update Sertifikat</button>
                                 {{-- test sertifikat --}}
                                 <a href="{{ route('dashboard.agenda.sertifikat', $agenda->id) }}" target="_blank"
                                     class="btn btn-info" target="_blank">Test Sertifikat</a>
@@ -121,6 +124,38 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-danger">Nonaktifkan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- modal update sertifikat --}}
+    <div class="modal fade" id="updateSertifikatModal" tabindex="-1" aria-labelledby="updateSertifikatModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateSertifikatModalLabel">Update Sertifikat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('dashboard.agenda.sertifikat.put', $agenda->id) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="modal-body">
+                        {{-- input file --}}
+                        <div class="mb-3">
+                            <label for="sertifikat" class="form-label">File Sertifikat</label>
+                            <input class="form-control" type="file" id="sertifikat" name="sertifikat" required>
+                            <span class="text-muted text-sm">File harus berformat .docx dengan tagging ${nama_peserta}
+                                untuk
+                                me-generate otomatis nama peserta</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning">Update</button>
                     </div>
                 </form>
             </div>

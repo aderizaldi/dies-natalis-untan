@@ -162,4 +162,18 @@ class AgendaController extends Controller
 
         return response()->download($pdf)->deleteFileAfterSend(true);
     }
+
+    public function updateSertifikat(Request $request, $id)
+    {
+        $request->validate([
+            'sertifikat' => 'required|file|mimes:docx|max:20480',
+        ]);
+
+        $agenda = Agenda::findOrFail($id);
+        Storage::delete('public/' . $agenda->sertifikat);
+        $agenda->sertifikat = $request->sertifikat->store('sertifikat', 'public');
+        $agenda->save();
+
+        return redirect()->back()->with('success', 'Berhasil mengupdate sertifikat');
+    }
 }

@@ -45,6 +45,7 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::post('/agenda/presensi/{id}/sertifikat', [AgendaController::class, 'aktifkanSertifikat'])->name('dashboard.agenda.sertifikat.post');
     Route::delete('/agenda/presensi/{id}/sertifikat', [AgendaController::class, 'nonaktifkanSertifikat'])->name('dashboard.agenda.sertifikat.delete');
     Route::get('/agenda/presensi/{id}/sertifikat', [AgendaController::class, 'downloadSertifikat'])->name('dashboard.agenda.sertifikat');
+    Route::put('/agenda/presensi/{id}/sertifikat', [AgendaController::class, 'updateSertifikat'])->name('dashboard.agenda.sertifikat.put');
 
     Route::get('/berita', [BeritaController::class, 'berita'])->name('dashboard.berita');
     Route::post('/berita', [BeritaController::class, 'beritaPost'])->name('dashboard.berita.post');
