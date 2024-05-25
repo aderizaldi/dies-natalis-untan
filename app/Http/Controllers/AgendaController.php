@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Dompdf;
 use App\Models\Agenda;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Exports\FormAgendasExport;
 use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpWord\TemplateProcessor;
+use NcJoes\OfficeConverter\OfficeConverter;
 
 class AgendaController extends Controller
 {
@@ -115,5 +119,47 @@ class AgendaController extends Controller
         //return download image from url_image
         $base64_image = base64_encode(file_get_contents($url_image));
         return response(base64_decode($base64_image))->header('Content-Type', 'image/png');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sertifikat
+    |--------------------------------------------------------------------------
+    */
+    public function aktifkanSertifikat(Request $request, $id)
+    {
+        $request->validate([
+            'sertifikat' => 'required|file|mimes:docx|max:20480',
+        ]);
+
+        $agenda = Agenda::findOrFail($id);
+        $agenda->sertifikat = $request->sertifikat->store('sertifikat', 'public');
+        $agenda->save();
+
+        return redirect()->back()->with('success', 'Berhasil mengaktifkan sertifikat');
+    }
+
+    public function nonaktifkanSertifikat($id)
+    {
+        $agenda = Agenda::findOrFail($id);
+        Storage::delete('public/' . $agenda->sertifikat);
+        $agenda->sertifikat = null;
+        $agenda->save();
+
+        return redirect()->back()->with('success', 'Berhasil menonaktifkan sertifikat');
+    }
+
+    public function downloadSertifikat($id)
+    {
+        $agenda = Agenda::where('id', $id)->where('sertifikat', '!=', null)->firstOrFail();
+        $template_processor = new TemplateProcessor(storage_path('app/public/' . $agenda->sertifikat));
+        $template_processor->setValue('nama_peserta', fake()->name);
+        $template_processor->saveAs(storage_path('app/public/sertifikat/' . 'test-' . $agenda->slug . '.docx'));
+
+        $converter = new OfficeConverter(storage_path('app/public/sertifikat/' . 'test-' . $agenda->slug . '.docx'));
+        $pdf = $converter->convertTo('test-' . $agenda->slug . '.pdf');
+        Storage::delete('public/sertifikat/' . 'test-' . $agenda->slug . '.docx');
+
+        return response()->download($pdf)->deleteFileAfterSend(true);
     }
 }

@@ -42,6 +42,9 @@ Route::prefix('admin/dashboard')->middleware('auth')->group(function () {
     Route::get('/agenda/presensi/{id}/export', [AgendaController::class, 'exportPresensiAgenda'])->name('dashboard.agenda.presensi.export');
     Route::get('/agenda/qr-code/{id}', [AgendaController::class, 'qrCodeAgenda'])->name('dashboard.agenda.qr_code');
     Route::get('/agenda/big-qr-code/{id}', [AgendaController::class, 'bigQrCodeAgenda'])->name('dashboard.agenda.big_qr_code');
+    Route::post('/agenda/presensi/{id}/sertifikat', [AgendaController::class, 'aktifkanSertifikat'])->name('dashboard.agenda.sertifikat.post');
+    Route::delete('/agenda/presensi/{id}/sertifikat', [AgendaController::class, 'nonaktifkanSertifikat'])->name('dashboard.agenda.sertifikat.delete');
+    Route::get('/agenda/presensi/{id}/sertifikat', [AgendaController::class, 'downloadSertifikat'])->name('dashboard.agenda.sertifikat');
 
     Route::get('/berita', [BeritaController::class, 'berita'])->name('dashboard.berita');
     Route::post('/berita', [BeritaController::class, 'beritaPost'])->name('dashboard.berita.post');

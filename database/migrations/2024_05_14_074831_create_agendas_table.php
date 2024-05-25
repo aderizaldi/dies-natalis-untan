@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('deskripsi')->nullable();
             $table->text('deskripsi_singkat')->nullable();
             $table->string('redirect')->nullable();
+            $table->string('sertifikat')->nullable();
             $table->timestamps();
         });
     }
