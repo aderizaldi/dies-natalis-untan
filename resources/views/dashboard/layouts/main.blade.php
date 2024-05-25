@@ -42,6 +42,25 @@
     <script src="{{ asset('assets-admin/compiled/js/app.js') }}"></script>
 
     <script>
+        (function($) {
+            window.onbeforeunload = function(e) {
+                window.name += ' [' + location.pathname + '[' + $(window).scrollTop().toString() + '[' + $(window)
+                    .scrollLeft().toString();
+            };
+            $.maintainscroll = function() {
+                if (window.name.indexOf('[') > 0) {
+                    var parts = window.name.split('[');
+                    window.name = $.trim(parts[0]);
+                    if (parts[parts.length - 3] == location.pathname) {
+                        window.scrollTo(parseInt(parts[parts.length - 1]), parseInt(parts[parts.length - 2]));
+                    }
+                }
+            };
+            $.maintainscroll();
+        })(jQuery);
+    </script>
+
+    <script>
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',

@@ -11,6 +11,11 @@ class FormAgenda extends Model
 
     protected $guarded = ['id'];
 
+    public function agenda()
+    {
+        return $this->belongsTo(Agenda::class);
+    }
+
     public function getNewNumber($agenda_id)
     {
         $last_number = $this->where('agenda_id', $agenda_id)->orderByDesc('created_at')->first();

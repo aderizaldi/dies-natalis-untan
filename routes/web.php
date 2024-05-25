@@ -23,6 +23,9 @@ Route::get('/agenda/{slug}', [PageController::class, 'detail_agenda'])->name('de
 Route::get('/livestream', [PageController::class, 'livestream'])->name('livestream');
 Route::get('/presensi/{slug}', [PageController::class, 'presensiAgenda'])->name('presensi');
 Route::post('/presensi/{slug}', [PageController::class, 'presensiAgendaPost'])->name('presensi.post');
+Route::get('/sertifikat', [PageController::class, 'sertifikat'])->name('sertifikat');
+Route::post('/sertifikat', [PageController::class, 'cekSertifikat'])->name('sertifikat.post');
+Route::get('/sertifikat/{nomor_peserta}', [PageController::class, 'downloadSertifikat'])->name('sertifikat.download');
 
 
 Route::prefix('auth')->group(function () {

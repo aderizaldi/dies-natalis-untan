@@ -54,6 +54,7 @@
 
 
     <!-- Vendor JS Files -->
+    <script src="{{ asset('assets-admin/extensions/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -66,6 +67,25 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script>
+        (function($) {
+            window.onbeforeunload = function(e) {
+                window.name += ' [' + location.pathname + '[' + $(window).scrollTop().toString() + '[' + $(window)
+                    .scrollLeft().toString();
+            };
+            $.maintainscroll = function() {
+                if (window.name.indexOf('[') > 0) {
+                    var parts = window.name.split('[');
+                    window.name = $.trim(parts[0]);
+                    if (parts[parts.length - 3] == location.pathname) {
+                        window.scrollTo(parseInt(parts[parts.length - 1]), parseInt(parts[parts.length - 2]));
+                    }
+                }
+            };
+            $.maintainscroll();
+        })(jQuery);
+    </script>
 
 </body>
 

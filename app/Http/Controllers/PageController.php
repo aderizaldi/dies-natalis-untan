@@ -16,6 +16,9 @@ use App\Enums\JenisKelaminEnum;
 use App\Enums\StatusPesertaEnum;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpWord\TemplateProcessor;
+use NcJoes\OfficeConverter\OfficeConverter;
 
 class PageController extends Controller
 {
@@ -133,5 +136,41 @@ class PageController extends Controller
             'nomor_peserta' => $nomor_peserta,
             'nama' => $request->nama,
         ]);
+    }
+
+    public function sertifikat()
+    {
+        $agendas = Agenda::where('sertifikat', '!=', null)->latest()->get();
+        return view('landing.pages.sertifikat', compact('agendas'));
+    }
+
+    public function cekSertifikat(Request $request)
+    {
+        $request->validate([
+            'agenda_id' => 'required|exists:agendas,id',
+            'nomor_peserta' => 'required|string|max:255',
+        ]);
+
+        $form_agenda = FormAgenda::where('agenda_id', $request->agenda_id)->where('nomor_peserta', $request->nomor_peserta)->first();
+        if (!$form_agenda) return redirect()->back()->with('error', ['nomor_peserta' => $request->nomor_peserta, 'agenda' => Agenda::find($request->agenda_id)])->withInput();
+        $form_agenda->load('agenda');
+
+        return redirect()->back()->with('success', $form_agenda)->withInput();
+    }
+
+    public function downloadSertifikat($nomor_peserta)
+    {
+        $form_agenda = FormAgenda::where('nomor_peserta', $nomor_peserta)->first();
+        if (!$form_agenda) return abort(404);
+
+        $template_processor = new TemplateProcessor(storage_path('app/public/' . $form_agenda->agenda->sertifikat));
+        $template_processor->setValue('nama_peserta', $form_agenda->nama);
+        $template_processor->saveAs(storage_path('app/public/sertifikat/' . $form_agenda->nomor_peserta . '.docx'));
+
+        $converter = new OfficeConverter(storage_path('app/public/sertifikat/' . $form_agenda->nomor_peserta . '.docx'));
+        $pdf = $converter->convertTo($form_agenda->nomor_peserta . '.pdf');
+        Storage::delete('public/sertifikat/' . $form_agenda->nomor_peserta . '.docx');
+
+        return response()->download($pdf)->deleteFileAfterSend(true);
     }
 }
