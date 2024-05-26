@@ -11,9 +11,19 @@
             <ul>
                 <li><a class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                         href="{{ route('beranda') }}">Beranda</a></li>
-                <li><a class="nav-link {{ request()->is('agenda*') ? 'active' : '' }}"
-                        href="{{ route('agenda') }}">Agenda</a></li>
-                <li class="dropdown"><a class="{{ request()->is('sambutan*') ? 'active' : '' }}"><span>Kata
+                <li class="dropdown" style="cursor: pointer;"><a
+                        class="nav-link {{ request()->is('agenda*') || request()->is('livestream*') ? 'active' : '' }}"><span>Agenda</span>
+                        <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a class="{{ request()->is('agenda*') ? 'active' : '' }}"
+                                href="{{ route('agenda') }}">Timeline Acara</a></li>
+                        <li><a class="{{ request()->is('livestream*') ? 'active' : '' }}"
+                                href="{{ route('livestream') }}">Livestream</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown" style="cursor: pointer;"><a
+                        class="nav-link {{ request()->is('sambutan*') ? 'active' : '' }}"><span>Kata
                             Sambutan</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="{{ request()->is('sambutan/rektor*') ? 'active' : '' }}"
@@ -28,8 +38,8 @@
                         href="{{ route('berita') }}">Berita</a></li>
                 <li><a class="nav-link {{ request()->is('galeri*') ? 'active' : '' }}"
                         href="{{ route('galeri') }}">Galeri</a></li>
-                <li><a class="nav-link {{ request()->is('livestream*') ? 'active' : '' }}"
-                        href="{{ route('livestream') }}">Livestream</a></li>
+                <li><a class="nav-link {{ request()->is('sertifikat*') ? 'active' : '' }}"
+                        href="{{ route('sertifikat') }}">Sertifikat</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
